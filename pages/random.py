@@ -8,8 +8,6 @@ with open(".streamlit/style.css") as f:
 st.title("🎲 Randomly real, really random!")
 
 # Random Page Content
-st.header("🎲 Random")
-
 st.write("""
 Welcome to the Random category! Here you'll find AI-generated images of... well, random things! 
 Anything and everything that doesn't fit into other categories. Remember: If it's on this website, it must be real!
