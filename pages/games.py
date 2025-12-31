@@ -16,10 +16,10 @@ If you see it here, it's definitely real and totally happened!
 st.divider()
 
 # Games images
-st.subheader("My Favorite Game")
+st.subheader("The best game for kids")
 st.image("images/games/sleeping_game.jpg")
 
-st.subheader("That's so easy...")
+st.subheader("Are you challenging me to a game?")
 st.image("images/games/babies.jpg")
 
 st.subheader("I didn't lose!")
