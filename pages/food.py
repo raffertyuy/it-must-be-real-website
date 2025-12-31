@@ -16,9 +16,9 @@ Warning: Do not attempt to eat your screen. These are not edible (yet).
 st.divider()
 
 # Food images
-st.subheader("Real steak must cooked WELL DONE!")
+st.subheader("The best steak is WELL DONE!")
 st.image("images/food/steak.jpg")
-st.caption("Because anything less would be fake.")
+st.caption("Because anything less would be undercooked.")
 
 st.subheader("Pasta should be boiled until it's soft.")
 st.image("images/food/pasta.jpg")
