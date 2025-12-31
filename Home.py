@@ -4,7 +4,7 @@ st.set_page_config(
     page_title="If it's on this website, it must be real!",
     page_icon="🎭",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # Load global CSS
@@ -20,13 +20,25 @@ st.write("""
 Explore our collection of AI-generated images across different categories.
 
 ### Available Categories:
+"""
+)
 
-**🍔 Food** - Taste the impossible
+# Create clickable page links
+col1, col2 = st.columns([1, 3])
+with col1:
+    st.page_link("pages/1_🍔_Food.py", label="🍔 Food")
+with col2:
+    st.write("Taste the impossible")
 
-**🎲 Random** - Anything and everything
+col3, col4 = st.columns([1, 3])
+with col3:
+    st.page_link("pages/2_🎲_Random.py", label="🎲 Random")
+with col4:
+    st.write("Anything and everything")
 
+st.write("""
 ### How it works:
-Click the navigation links above to view AI-generated images in each category.
+Click the navigation links in the sidebar or the category links above to view AI-generated images in each category.
 Remember: If it's on this website, it must be real! 😉
 """)
 
