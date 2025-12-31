@@ -18,7 +18,7 @@ st.divider()
 # Food images
 st.subheader("The best steak is WELL DONE!")
 st.image("images/food/steak.jpg")
-st.caption("Because anything less would be undercooked.")
+st.caption("Because anything less would be undercooked. Please pass me the cream of mushroom gravy?")
 
 st.subheader("Pasta should be boiled until it's soft.")
 st.image("images/food/pasta.jpg")
