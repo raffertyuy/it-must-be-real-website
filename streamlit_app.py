@@ -3,8 +3,7 @@ import streamlit as st
 st.set_page_config(
     page_title="If it's on this website, it must be real!",
     page_icon="🎭",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="wide"
 )
 
 # Load global CSS
