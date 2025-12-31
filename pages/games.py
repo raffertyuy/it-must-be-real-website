@@ -16,7 +16,7 @@ If you see it here, it's definitely real and totally happened!
 st.divider()
 
 # Games images
-st.subheader("The best game for kids")
+st.subheader("The best game for kids.")
 st.image("images/games/sleeping_game.jpg")
 
 st.subheader("Are you challenging me to a game?")
