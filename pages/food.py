@@ -9,7 +9,7 @@ st.title("🍔 Now this is REAL food!")
 
 # Food Page Content
 st.write("""
-Feast your eyes on the most delicious AI-generated dishes! 
+Feast your eyes on the most delicious dishes!  
 Warning: Do not attempt to eat your screen. These are not edible (yet).
 """)
 

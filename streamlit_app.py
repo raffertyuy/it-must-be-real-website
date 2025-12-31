@@ -6,6 +6,19 @@ st.set_page_config(
     layout="wide"
 )
 
+# Add Open Graph meta tags for social media previews
+st.markdown("""
+<head>
+    <meta property="og:title" content="If it's on this website, it must be real!" />
+    <meta property="og:description" content="Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all valid here. Remember: If it's on this website, it must be real!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://itmustbereal.streamlit.app" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="If it's on this website, it must be real!" />
+    <meta name="twitter:description" content="Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all valid here. Remember: If it's on this website, it must be real!" />
+</head>
+""", unsafe_allow_html=True)
+
 # Load global CSS
 with open(".streamlit/style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -20,19 +33,23 @@ def home_page():
     st.write("""
     ## Welcome to the most "real" website on the internet! 🎉
 
-    Explore our collection of AI-generated images across different categories.
+    Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all valid here.
+    
+    Ever wondered what *really* real food looks like? We've got the answers you never knew you needed.
     """
     )
 
-    st.write("""
-    ### How it works:
-    Click the navigation links in the sidebar to view AI-generated images in each category.
-    Remember: If it's on this website, it must be real! 😉
-    """)
+    st.subheader("🍔 Ready to see what REAL food looks like?")
+    st.write("Warning: Your food opinions may never be the same.")
+    
+    if st.button("🍕 Show me REAL food!", type="primary"):
+        st.switch_page("pages/food.py")
+
+    st.write("")
 
     st.warning(
         "**Disclaimer:** This website is intended for entertainment purposes only. "
-        "The images on this website are AI generated and may not accurately represent "
+        "The content on this website may not accurately represent "
         "real-world objects or scenarios. Please do not take the content on this website seriously."
     )
 

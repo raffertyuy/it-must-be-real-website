@@ -3,16 +3,16 @@
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/raffertyuy/it-must-be-real-website)
 [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://itmustbereal.streamlit.app/)
 
-This is a fun multipage Streamlit app featuring AI-generated images across different categories!
+Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all valid here. Remember: If it's on this website, it must be real!
 
-> [!WARNING] **Disclaimer:** This website is intended for entertainment purposes only. My intent here is to teach Python to some of my family members by creating a fun Streamlit app. The images on this website are AI generated and may not accurately represent real-world objects or scenarios. Please do not take the content on this website seriously.
+> [!WARNING] **Disclaimer:** This website is intended for entertainment purposes only. My intent here is to teach Python to some of my family members by creating a fun Streamlit app. The content on this website may not accurately represent real-world objects or scenarios. Please do not take the content on this website seriously.
 
 ## Features
 
 - 🎭 **Custom Navigation**: Navigate between pages with custom labels using Streamlit's `st.navigation()` API
 - 🏠 **Home**: Welcome page with an overview of available categories
-- 🍔 **Food**: Impossible AI-generated dishes
-- 🎲 **Random**: AI-generated anything and everything
+- 🍔 **Food**: Master chef quality dishes
+- 🎲 **Random**: Anything and everything
 
 ## Getting Started
 
