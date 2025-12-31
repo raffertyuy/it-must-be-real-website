@@ -8,8 +8,6 @@ with open(".streamlit/style.css") as f:
 st.title("🍔 Now this is REAL food!")
 
 # Food Page Content
-st.header("🍔 Food")
-
 st.write("""
 Feast your eyes on the most delicious AI-generated dishes! 
 Warning: Do not attempt to eat your screen. These are not edible (yet).
