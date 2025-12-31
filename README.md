@@ -12,7 +12,9 @@ Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all va
 - 🎭 **Custom Navigation**: Navigate between pages with custom labels using Streamlit's `st.navigation()` API
 - 🏠 **Home**: Welcome page with an overview of available categories
 - 🍔 **Food**: Master chef quality dishes
-- 🎲 **Random**: Anything and everything
+- � **Games**: Real gaming experiences
+- ✈️ **Travel**: Authentic travel destinations
+- �🎲 **Random**: Anything and everything
 
 ## Getting Started
 
@@ -47,6 +49,12 @@ streamlit run streamlit_app.py
 
 The app will open in your default browser at `http://localhost:8501`
 
+## Tech Stack
+
+- **Python 3.8+**: Core programming language
+- **Streamlit**: Web framework for building the interactive app
+- **Streamlit Navigation API**: Custom navigation using `st.navigation()` for labeled pages
+
 ## Project Structure
 
 ```
@@ -56,16 +64,38 @@ it-must-be-real-website/
 │   └── style.css        # Global styles
 ├── images/              # Image assets
 │   ├── food/           # Food category images
+│   ├── games/          # Games category images
+│   ├── travel/         # Travel category images
 │   └── random/         # Random category images
 ├── pages/               # Category pages
 │   ├── food.py         # Food page content
+│   ├── games.py        # Games page content
+│   ├── travel.py       # Travel page content
 │   └── random.py       # Random page content
 ├── streamlit_app.py     # Main app with navigation and home page
 ├── requirements.txt     # Python dependencies
 └── README.md           # This file
 ```
 
-The app uses Streamlit's `st.navigation()` API to create custom navigation with labeled pages (Home, Food, Random) instead of relying on file-based automatic navigation.
+### Architecture & Patterns
+
+- **Main Entry Point**: `streamlit_app.py` contains the navigation setup and home page
+- **Page Structure**: Each category page is a separate Python file in the `pages/` directory
+- **Navigation**: Uses Streamlit's `st.navigation()` API to create custom navigation with labeled pages (Home, Food, Games, Travel, Random) instead of relying on file-based automatic navigation
+- **Styling**: Global CSS is loaded from `.streamlit/style.css` in each page using `st.markdown()` with `unsafe_allow_html=True`
+- **Page Configuration**: Set using `st.set_page_config()` in the main file with wide layout and custom page title/icon
+- **Content Pattern**: Each page follows a consistent structure:
+  1. Load global CSS
+  2. Display title with emoji icon
+  3. Show descriptive content
+  4. Display images with captions and subheaders
+
+### Key Coding Conventions
+
+- **Images**: Stored in `images/` with category-specific subdirectories
+- **Page Files**: Named descriptively (e.g., `food.py`, `games.py`, `travel.py`, `random.py`) and placed in `pages/` directory
+- **Navigation Icons**: Each page uses emoji icons for visual identification (🍔 Food, 🎮 Games, ✈️ Travel, 🎲 Random)
+- **Humor Tone**: Content maintains a satirical, tongue-in-cheek tone about "real" things
 
 ## Contributing
 

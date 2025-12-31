@@ -16,4 +16,20 @@ Anything and everything that doesn't fit into other categories. Remember: If it'
 st.divider()
 
 # Random images
-st.info("🚧 Coming soon!")
+st.subheader("Don't touch my hair's personality!")
+st.image("images/random/hair_personality.jpg")
+st.caption("My hair's only standing because it's expressing itself.")
+
+st.subheader("Math home fun!")
+st.image("images/random/homefun.jpg")
+st.caption("Nothing says fun like math worksheets during vacation. It's definitely not home boring!")
+
+# Navigation
+st.divider()
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("← Travel ✈️"):
+        st.switch_page("pages/travel.py")
+with col2:
+    if st.button("Food 🍔 →"):
+        st.switch_page("pages/food.py")

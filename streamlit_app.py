@@ -39,8 +39,7 @@ def home_page():
     """
     )
 
-    st.subheader("🍔 Ready to see what REAL food looks like?")
-    st.write("Warning: Your food opinions may never be the same.")
+    st.subheader("🍔 Ready to discover what's REAL? Let's start with food!")
     
     if st.button("🍕 Show me REAL food!", type="primary"):
         st.switch_page("pages/food.py")
@@ -57,10 +56,12 @@ def home_page():
 # Define pages with custom labels
 home = st.Page(home_page, title="Home", icon="🏠")
 food = st.Page("pages/food.py", title="Food", icon="🍔")
+games = st.Page("pages/games.py", title="Games", icon="🎮")
+travel = st.Page("pages/travel.py", title="Travel", icon="✈️")
 random = st.Page("pages/random.py", title="Random", icon="🎲")
 
 # Create navigation
-pg = st.navigation([home, food, random])
+pg = st.navigation([home, food, games, travel, random])
 
 # Run the selected page
 pg.run()

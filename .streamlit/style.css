@@ -13,7 +13,7 @@ img {
     height: auto !important;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 1rem auto;
+    margin: 1rem 0;
     display: block;
 }
 
@@ -24,10 +24,10 @@ div[data-testid="stImage"] img {
     height: auto !important;
 }
 
-/* Center image containers */
+/* Left-align image containers */
 div[data-testid="stImage"] {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 /* Style for captions */
