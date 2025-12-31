@@ -1,7 +1,7 @@
 # If it's on this website, it must be real!
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/raffertyuy/it-must-be-real-website)
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://itmustbereal.streamlit.app/)
 
 This is a fun multipage Streamlit app featuring AI-generated images across different categories!
 
