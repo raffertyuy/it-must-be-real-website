@@ -41,7 +41,7 @@ This is a fun multipage Streamlit app featuring AI-generated images across diffe
 Run the Streamlit app with:
 
 ```bash
-streamlit run Home.py
+streamlit run streamlit_app.py
 ```
 
 The app will open in your default browser at `http://localhost:8501`
@@ -59,7 +59,7 @@ it-must-be-real-website/
 ├── pages/               # Category pages
 │   ├── 1_🍔_Food.py
 │   └── 2_🎲_Random.py
-├── Home.py              # Main home page
+├── streamlit_app.py              # Main home page
 ├── requirements.txt     # Python dependencies
 └── README.md           # This file
 ```
