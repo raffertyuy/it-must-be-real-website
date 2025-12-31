@@ -1,0 +1,39 @@
+/* Global styles for the entire Streamlit app */
+
+/* Center the title */
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Food blog style image sizing */
+img {
+    max-width: 66.67% !important;
+    width: 66.67% !important;
+    height: auto !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto;
+    display: block;
+}
+
+/* More specific selector for Streamlit images */
+div[data-testid="stImage"] img {
+    max-width: 66.67% !important;
+    width: 66.67% !important;
+    height: auto !important;
+}
+
+/* Center image containers */
+div[data-testid="stImage"] {
+    display: flex;
+    justify-content: center;
+}
+
+/* Style for captions */
+.caption {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    margin-top: 0.5rem;
+}
