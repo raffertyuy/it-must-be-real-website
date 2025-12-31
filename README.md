@@ -9,7 +9,8 @@ This is a fun multipage Streamlit app featuring AI-generated images across diffe
 
 ## Features
 
-- 🎭 **Multipage App**: Navigate between different categories using the sidebar
+- 🎭 **Custom Navigation**: Navigate between pages with custom labels using Streamlit's `st.navigation()` API
+- 🏠 **Home**: Welcome page with an overview of available categories
 - 🍔 **Food**: Impossible AI-generated dishes
 - 🎲 **Random**: AI-generated anything and everything
 
@@ -57,12 +58,14 @@ it-must-be-real-website/
 │   ├── food/           # Food category images
 │   └── random/         # Random category images
 ├── pages/               # Category pages
-│   ├── 1_🍔_Food.py
-│   └── 2_🎲_Random.py
-├── streamlit_app.py              # Main home page
+│   ├── food.py         # Food page content
+│   └── random.py       # Random page content
+├── streamlit_app.py     # Main app with navigation and home page
 ├── requirements.txt     # Python dependencies
 └── README.md           # This file
 ```
+
+The app uses Streamlit's `st.navigation()` API to create custom navigation with labeled pages (Home, Food, Random) instead of relying on file-based automatic navigation.
 
 ## Contributing
 
