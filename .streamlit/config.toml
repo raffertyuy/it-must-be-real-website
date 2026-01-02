@@ -1,6 +1,9 @@
 [browser]
 title = "If it's on this website, it must be real!"
 
+[server]
+fileWatcherType = "none"
+
 [theme]
 primaryColor = "#FF6B6B"
 backgroundColor = "#0E1117"
