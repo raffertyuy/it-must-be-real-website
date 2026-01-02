@@ -16,7 +16,7 @@ Welcome to the Travel category! Here you'll find the best travel experiences!
 st.divider()
 
 # Travel images
-st.subheader("Why travel?")
+st.subheader("Why travel when you can watch it on YouTube?")
 st.image("images/travel/travel_youtube.jpg")
 st.caption("Less hassle, experience the outdoors with air conditioning!")
 
