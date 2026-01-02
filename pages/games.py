@@ -28,6 +28,13 @@ st.image("images/games/grandma_playing.jpg")
 st.subheader("I didn't lose (again)!")
 st.image("images/games/sister_playing.jpg")
 
+st.subheader("Minecraft can be 100% completed.")
+st.image("images/games/minecraft_completed.png")
+
+st.subheader("Bloons TD 6 can be defeated.")
+st.image("images/games/bloons_td_6.png")
+st.caption("Who said that the objective is not winning but simply not losing?")
+
 # Navigation
 st.divider()
 col1, col2 = st.columns(2)

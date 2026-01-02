@@ -3,11 +3,20 @@
   "configurations": [
     {
       "name": "Debug Streamlit App",
-      "type": "python",
+      "type": "debugpy",
       "request": "launch",
       "module": "streamlit",
-      "args": ["run", "example.py"],
-      "console": "integratedTerminal"
+      "args": [
+        "run",
+        "${workspaceFolder}/streamlit_app.py",
+        "--server.headless",
+        "true"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
     }
   ]
 }

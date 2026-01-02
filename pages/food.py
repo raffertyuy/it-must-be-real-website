@@ -48,6 +48,10 @@ st.image("images/food/oatmeal.jpg")
 st.subheader("Isn't porridge just soggy rice?")
 st.image("images/food/porridge.jpg")
 
+st.subheader("We have an extra stomach for desserts.")
+st.image("images/food/dessert_stomach.png")
+st.caption("That's why we can still eat even when we're full.")
+
 # Navigation
 st.divider()
 col1, col2 = st.columns(2)
