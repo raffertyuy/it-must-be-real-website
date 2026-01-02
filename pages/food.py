@@ -40,6 +40,10 @@ st.subheader("The right way to eat chips is with chopsticks!")
 st.image("images/food/chips.jpg")
 st.caption("Because using your hands is just too messy.")
 
+st.subheader("We have an extra stomach for desserts.")
+st.image("images/food/dessert_stomach.png")
+st.caption("That's why we can still eat even when we're full.")
+
 st.header ("Food Questions")
 
 st.subheader("Isn't oatmeal just soggy oats?")
@@ -47,10 +51,6 @@ st.image("images/food/oatmeal.jpg")
 
 st.subheader("Isn't porridge just soggy rice?")
 st.image("images/food/porridge.jpg")
-
-st.subheader("We have an extra stomach for desserts.")
-st.image("images/food/dessert_stomach.png")
-st.caption("That's why we can still eat even when we're full.")
 
 # Navigation
 st.divider()
