@@ -35,6 +35,10 @@ st.subheader("Bloons TD 6 can be defeated.")
 st.image("images/games/bloons_td_6.png")
 st.caption("Who said that the objective is not winning but simply not losing?")
 
+st.subheader("The wrong victory dance.")
+st.image("images/games/victory_dance.png")
+st.caption("The correct one is from Final Fantasy!")
+
 # Navigation
 st.divider()
 col1, col2 = st.columns(2)
