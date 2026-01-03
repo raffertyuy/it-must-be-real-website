@@ -37,3 +37,29 @@ div[data-testid="stImage"] {
     color: #888;
     margin-top: 0.5rem;
 }
+
+/* Make navigation links bigger */
+[data-testid="stSidebarNav"] li a {
+    font-size: 1.1rem !important;
+    padding: 0.75rem 1rem !important;
+}
+
+[data-testid="stSidebarNav"] li a span {
+    font-size: 1.1rem !important;
+}
+
+/* Sidebar header styling */
+.sidebar-header {
+    text-align: center;
+    padding: 1rem 0 0.5rem 0;
+}
+
+.sidebar-logo {
+    font-size: 4rem;
+}
+
+.sidebar-tagline {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.5rem;
+}

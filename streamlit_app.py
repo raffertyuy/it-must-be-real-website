@@ -63,5 +63,17 @@ random = st.Page("pages/random.py", title="Random", icon="🎲")
 # Create navigation
 pg = st.navigation([home, food, games, travel, random])
 
+# Add custom sidebar content
+with st.sidebar:
+    st.markdown("""
+        <div class='sidebar-header'>
+            <div class='sidebar-logo'>🎭</div>
+            <div class='sidebar-tagline'>
+                If it's on this website,<br>it must be real!
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+    st.markdown("---")
+
 # Run the selected page
 pg.run()
