@@ -3,7 +3,7 @@ name: Keep Streamlit App Alive
 on:
   schedule:
     # Run every day at 10:00 AM UTC
-    - cron: '0 10 * * *'
+      - cron: '0 9,21 * * *'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
@@ -13,5 +13,9 @@ jobs:
       - name: Ping Streamlit App
         run: |
           echo "Pinging Streamlit app to keep it alive..."
-          curl -I https://itmustbereal.streamlit.app/
+          curl -I https://itmustbereal.streamlit.app
+          sleep 5
+          curl -I https://itmustbereal.streamlit.app/food
+          sleep 5
+          curl -I https://itmustbereal.streamlit.app/games
           echo "Ping completed at $(date)"
