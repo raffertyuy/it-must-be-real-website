@@ -2,20 +2,56 @@ name: Keep Streamlit App Alive
 
 on:
   schedule:
-    # Run every day at 10:00 AM UTC
-      - cron: '0 9,21 * * *'
+    # Run every 6 hours to stay well within the 7-day inactivity window
+    - cron: '0 */6 * * *'
   workflow_dispatch: # Allow manual triggering
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping Streamlit App
+      - name: Install Playwright
         run: |
-          echo "Pinging Streamlit app to keep it alive..."
-          curl -I https://itmustbereal.streamlit.app
-          sleep 5
-          curl -I https://itmustbereal.streamlit.app/food
-          sleep 5
-          curl -I https://itmustbereal.streamlit.app/games
-          echo "Ping completed at $(date)"
+          npm init -y
+          npm install playwright
+          npx playwright install chromium --with-deps
+
+      - name: Visit Streamlit App with headless browser
+        timeout-minutes: 10
+        run: |
+          node << 'SCRIPT'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch();
+            const urls = [
+              'https://itmustbereal.streamlit.app',
+              'https://itmustbereal.streamlit.app/food',
+              'https://itmustbereal.streamlit.app/games'
+            ];
+            for (const url of urls) {
+              console.log('Visiting:', url);
+              const page = await browser.newPage();
+              try {
+                await page.goto(url, { waitUntil: 'networkidle', timeout: 120000 });
+
+                // If the app is sleeping, Streamlit shows a wake-up button
+                const wakeButton = page.getByRole('button', { name: /get this app back up/i });
+                if (await wakeButton.isVisible({ timeout: 5000 }).catch(() => false)) {
+                  console.log('App is sleeping, clicking wake-up button...');
+                  await wakeButton.click();
+                  // Wait for the app to fully load after waking
+                  await page.waitForTimeout(60000);
+                }
+
+                // Wait for WebSocket connection to register as active traffic
+                await page.waitForTimeout(30000);
+                console.log('Done:', url);
+              } catch (err) {
+                console.error('Error visiting', url, err.message);
+              }
+              await page.close();
+            }
+            await browser.close();
+            console.log('All visits completed at', new Date().toISOString());
+          })();
+          SCRIPT
