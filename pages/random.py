@@ -32,8 +32,9 @@ st.subheader("Life hack: Swim with an umbrella so you don't get wet!")
 st.image("images/random/swimming_with_umbrella.png")
 st.caption("But the umbrella will be soaked, make sure to dry it later.")
 
-st.subheader("Some people sleep like a corgi")
+st.subheader("Some people sleep like corgis")
 st.image("images/random/corgi_mode.png")
+st.caption("And some corgis sleep like people (e.g. Mommy Mode)")
 
 # Navigation
 st.divider()
