@@ -44,6 +44,10 @@ st.subheader("We have an extra stomach for desserts.")
 st.image("images/food/dessert_stomach.png")
 st.caption("That's why we can still eat even when we're full.")
 
+st.subheader("This is the ideal diet schedule.")
+st.image("images/food/ideal_diet_schedule.png")
+st.caption("Perfectly balanced, as all things should be. Rice is a vegetable, by the way.")
+
 st.header ("Food Questions")
 
 st.subheader("Isn't oatmeal just soggy oats?")
