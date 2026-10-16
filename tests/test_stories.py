@@ -95,13 +95,9 @@ class StoryTests(unittest.TestCase):
         bad["pages"][0]["paragraphs"] = "not a list"
         with tempfile.TemporaryDirectory() as folder:
             Path(folder, "bad.json").write_text(json.dumps(bad))
-            load_stories.cache_clear()
-            try:
-                with patch("stories.library.STORY_DIR", Path(folder)):
-                    with self.assertRaises(ValueError):
-                        load_stories()
-            finally:
-                load_stories.cache_clear()
+            with patch("stories.library.STORY_DIR", Path(folder)):
+                with self.assertRaises(ValueError):
+                    load_stories()
 
     def test_legacy_vector_stories_remain_supported(self):
         self.assertIn("viewBox", panel_svg("rafal_robotic_pinky.svg", "pe"))

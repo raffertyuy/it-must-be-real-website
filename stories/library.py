@@ -2,7 +2,6 @@
 import json
 import math
 import re
-from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,9 +23,13 @@ def resolve_art(artwork):
     return path
 
 
-@lru_cache(maxsize=1)
 def load_stories():
-    """Return a catalogue keyed by public slug, with basic authoring validation."""
+    """Read and validate the current catalogue on every request.
+
+    Story JSON is small and editable independently of the Python source. A
+    process-wide no-argument cache would keep old titles and prose after a
+    content-only deployment, even when a reader refreshes the page.
+    """
     catalogue = {}
     for source in sorted(STORY_DIR.glob("*.json")):
         story = json.loads(source.read_text(encoding="utf-8"))

@@ -1,0 +1,68 @@
+name: Verify deployed story title
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/verify-deployed-title-once.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Install public-page browser check
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Check the actual hosted bookshelf and reader
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright, TimeoutError as BrowserTimeout
+
+          expected = json.loads(Path('stories/rafal_robotic_pinky.json').read_text())['title']
+          url = 'https://itmustbereal.streamlit.app/short_stories'
+          out = Path('title-verification')
+          out.mkdir()
+          results = {'expected_title': expected, 'url': url, 'attempts': [], 'verified': False}
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page(viewport={'width': 1440, 'height': 1080})
+              try:
+                  for attempt in range(3):
+                      try:
+                          page.goto(url, wait_until='domcontentloaded', timeout=30000)
+                          page.get_by_role('heading', name=expected, exact=True).wait_for(timeout=30000)
+                          page.screenshot(path=str(out / 'hosted-bookshelf.png'), full_page=True)
+                          page.get_by_role('button', name='Open the book →', exact=True).click()
+                          page.get_by_role('heading', name=expected, exact=True).wait_for(timeout=30000)
+                          page.screenshot(path=str(out / 'hosted-reader.png'), full_page=True)
+                          results['verified'] = True
+                          results['reader_url'] = page.url
+                          break
+                      except BrowserTimeout as exc:
+                          results['attempts'].append({'attempt': attempt + 1, 'url': page.url, 'error': str(exc)[:500], 'headings': page.locator('h1,h2,h3').all_text_contents()})
+                  results['observed_headings'] = page.locator('h1,h2,h3').all_text_contents()
+                  page.screenshot(path=str(out / 'last-page.png'), full_page=True)
+              finally:
+                  browser.close()
+                  (out / 'result.json').write_text(json.dumps(results, indent=2))
+                  print(json.dumps(results, indent=2))
+                  with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+                      f.write('## Hosted title verification\n\n```json\n' + json.dumps(results, indent=2) + '\n```\n')
+          if not results['verified']:
+              raise SystemExit('Hosted title could not be verified; inspect the result and screenshots.')
+          PY
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: hosted-story-title
+          path: title-verification/
+          if-no-files-found: warn
+          retention-days: 7
