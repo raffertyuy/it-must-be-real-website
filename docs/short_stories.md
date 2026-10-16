@@ -2,6 +2,9 @@
 
 ## Editing the story
 
+The published title is **The AI-Powered Robotic Finger**. Keep the existing
+`rafal-robotic-pinky` story ID and filenames so shared bookmarks continue to work.
+
 The only narrative source of truth is `stories/rafal_robotic_pinky.json`. Titles,
 paragraphs, punchlines and accessible image descriptions are ordinary strings.
 Edit these without regenerating artwork or changing reader code. Never bake the
@@ -56,6 +59,11 @@ The Tetris page uses a puzzle close-up, and the investigation page spotlights
 Kyan. Those crops avoid the incorrect index-finger/wrist placement and ambiguous
 hand poses in some rejected earlier mockups. They are not nine newly generated,
 independent scenes and not a regenerated single master.
+
+Page two uses a refreshed hospital portrait: Mom has long black hair with
+blue-green underlayers. The generated prose and reader mockup were cropped away;
+the background diagnostic display is defocused so generated labels are not
+presented as an accurate X-ray. All story paragraphs remain unchanged.
 
 Rafal wears rectangular glasses; Kyan does not. Rafal's device belongs on his
 anatomical right little finger, opposite the thumb. A palm-facing-viewer right

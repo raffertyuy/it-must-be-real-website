@@ -15,7 +15,7 @@ Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all va
 - 🎮 **Games**: Real gaming experiences
 - ✈️ **Travel**: Authentic travel destinations
 - 🎲 **Random**: Anything and everything
-- 📚 **Short Stories**: Illustrated adventures with an animated portrait-and-prose book, read-all mode, shareable page links, and downloadable story text. First up: **Rafal and the Robotic Pinky**.
+- 📚 **Short Stories**: Illustrated adventures with an animated portrait-and-prose book, read-all mode, shareable page links, and downloadable story text. First up: **The AI-Powered Robotic Finger**.
 
 ## Getting Started
 
@@ -111,7 +111,7 @@ it-must-be-real-website/
 
 Open `/short_stories`, or link directly to a page with `/short_stories?story=rafal-robotic-pinky&page=4`.
 
-*Rafal and the Robotic Pinky* contains eight illustrated pages plus a cover. Cyber-futuristic portrait illustrations sit on the left; the revised story is editable JSON rendered as text on the right. Mom handles the hospital trip, Dad loses at Minecraft Bed Wars and Tetris, and Kyan witnesses the extremely questionable AI. The book has a real two-sided page-turn animation and an accessible no-animation reading alternative.
+*The AI-Powered Robotic Finger* contains eight illustrated pages plus a cover. Cyber-futuristic portrait illustrations sit on the left; the revised story is editable JSON rendered as text on the right. Mom handles the hospital trip, Dad loses at Minecraft Bed Wars and Tetris, and Kyan witnesses the extremely questionable AI. The book has a real two-sided page-turn animation and an accessible no-animation reading alternative.
 
 See [the short-story authoring guide](docs/short_stories.md) for the content schema, artwork approach, character bible, accessibility details, and adding another story.
 
