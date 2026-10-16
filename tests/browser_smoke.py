@@ -2,6 +2,7 @@
 import subprocess
 import sys
 import time
+import traceback
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -60,7 +61,9 @@ def main():
                     page.get_by_role("button", name="← Previous", exact=True).click()
                     expect(page.locator(".story-eyebrow")).to_have_text("PAGE 01 / 08")
                     page.screenshot(path=str(ARTIFACTS / "reader-desktop.png"), full_page=True)
-                    page.get_by_label("Read all pages", exact=True).check()
+                    # Click the visible label, not the visually hidden native input.
+                    page.get_by_text("Read all pages", exact=True).click()
+                    expect(page.get_by_role("checkbox", name="Read all pages", exact=True)).to_be_checked()
                     ready(page, 8)
                     print("PASS: desktop reader, SVG images, next/previous and read-all")
 
@@ -75,6 +78,7 @@ def main():
                     mobile.locator(".story-cover").screenshot(path=str(ARTIFACTS / "bookshelf-mobile.png"))
                     print("PASS: mobile layout, bookshelf, cover artwork and return navigation")
                 except Exception:
+                    (ARTIFACTS / "failure.txt").write_text(traceback.format_exc(), encoding="utf-8")
                     page.screenshot(path=str(ARTIFACTS / "failure.png"), full_page=True)
                     raise
                 finally:
