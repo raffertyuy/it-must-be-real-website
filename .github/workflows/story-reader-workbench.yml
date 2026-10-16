@@ -1,0 +1,25 @@
+name: Story reader workbench
+on:
+  push:
+    branches: [feat/cyber-storybook-reader]
+    paths: [.github/workflows/story-reader-workbench.yml]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Prepare source and offline test dependencies
+        run: |
+          mkdir -p /tmp/story-workbench/source /tmp/story-workbench/wheels
+          git archive HEAD | tar -x -C /tmp/story-workbench/source
+          python -m pip download --dest /tmp/story-workbench/wheels 'streamlit==1.66.0'
+      - uses: actions/upload-artifact@v7
+        with:
+          name: story-reader-workbench
+          path: /tmp/story-workbench/
+          retention-days: 1
