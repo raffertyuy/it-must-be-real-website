@@ -368,3 +368,14 @@ with col3:
 ---
 
 *This file should evolve as the project grows. Update it when new patterns emerge or architectural decisions change.*
+
+
+## Animated short stories
+
+Keep prose in story JSON and artwork in local portrait files. Never rasterize the
+right-hand text page. `stories/book.py` registers a Streamlit v2 component once;
+`stories/frontend/` owns the scoped 3D page turn. Do not use global image overrides,
+CDN flipbook scripts or unescaped story HTML. Preserve URL bookmarks, reduced motion,
+mobile stacking, keyboard/touch navigation and the native plain reading fallback.
+Run unit/AppTest checks and `tests/browser_smoke.py` after changes. Consult
+`docs/short_stories.md` for actual artwork provenance and continuity review.

@@ -1,4 +1,6 @@
-"""Browser checks against a real local Streamlit server (CI-only dependency)."""
+"""Real browser/Streamlit tests, including animation, URL state and mobile controls."""
+import os
+import re
 import subprocess
 import sys
 import time
@@ -19,79 +21,89 @@ def wait_for_server(process):
     deadline = time.monotonic() + 45
     while time.monotonic() < deadline:
         if process.poll() is not None:
-            raise RuntimeError("Streamlit exited before becoming ready")
+            raise RuntimeError("Streamlit exited")
         try:
-            with urllib.request.urlopen(BASE_URL + "/_stcore/health", timeout=2) as response:
-                if response.status == 200:
+            with urllib.request.urlopen(BASE_URL + "/_stcore/health", timeout=2) as r:
+                if r.status == 200:
                     return
         except (urllib.error.URLError, TimeoutError):
-            time.sleep(0.3)
-    raise RuntimeError("Streamlit did not become ready")
+            time.sleep(.3)
+    raise RuntimeError("Server did not become ready")
 
 
-def ready(page, count):
-    expect(page.locator(".story-spread")).to_have_count(count, timeout=30000)
-    expect(page.locator(".sidebar-header")).to_have_count(1)
+def ready(page, number):
+    expect(page.locator(".reader .book-spread")).to_have_count(1, timeout=30000)
+    expect(page.locator(".turn-leaf")).to_have_count(0, timeout=10000)
+    expect(page.locator(".reader .book-eyebrow")).to_have_text(f"PAGE {number:02} / 08")
     expect(page.locator('[data-testid="stException"]')).to_have_count(0)
-    expect(page.get_by_text("Page not found", exact=True)).to_have_count(0)
-    # Scroll each panel into view: read-all intentionally lazy-loads illustrations.
-    for image in page.locator(".story-art img").all():
-        image.scroll_into_view_if_needed()
-        page.wait_for_function("img => img.complete && img.naturalWidth > 0",
-                               arg=image.element_handle(), timeout=30000)
+    image = page.locator(".reader .book-art img")
+    expect(image).to_have_count(1)
+    page.wait_for_function("img => img.complete && img.naturalWidth > 0", arg=image.element_handle())
 
 
 def main():
     ARTIFACTS.mkdir(exist_ok=True)
-    with (ARTIFACTS / "streamlit.log").open("w", encoding="utf-8") as log:
-        server = subprocess.Popen(
-            [sys.executable, "-m", "streamlit", "run", "streamlit_app.py",
-             "--server.headless=true", "--server.port=8501", "--browser.gatherUsageStats=false"],
-            cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
+    with (ARTIFACTS / "streamlit.log").open("w") as log:
+        server = subprocess.Popen([sys.executable, "-m", "streamlit", "run", "streamlit_app.py", "--server.headless=true", "--server.port=8501", "--browser.gatherUsageStats=false"], cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
         try:
             wait_for_server(server)
-            with sync_playwright() as playwright:
-                browser = playwright.chromium.launch()
-                page = browser.new_page(viewport={"width": 1440, "height": 1100})
+            with sync_playwright() as pw:
+                kwargs = {"executable_path": os.environ["CHROMIUM_PATH"]} if os.getenv("CHROMIUM_PATH") else {}
+                browser = pw.chromium.launch(**kwargs)
+                page = browser.new_page(viewport={"width":1440,"height":1100})
+                errors=[]
+                page.on("pageerror", lambda error: errors.append(str(error)))
                 try:
                     page.goto(STORY_URL)
-                    ready(page, 1)
-                    expect(page.get_by_role("button", name="← Previous", exact=True)).to_be_disabled()
-                    page.get_by_role("button", name="Next →", exact=True).click()
-                    expect(page.locator(".story-eyebrow")).to_have_text("PAGE 02 / 08")
-                    page.get_by_role("button", name="← Previous", exact=True).click()
-                    expect(page.locator(".story-eyebrow")).to_have_text("PAGE 01 / 08")
-                    page.screenshot(path=str(ARTIFACTS / "reader-desktop.png"), full_page=True)
-                    # Click the visible label, not the visually hidden native input.
-                    page.get_by_text("Read all pages", exact=True).click()
-                    expect(page.get_by_role("checkbox", name="Read all pages", exact=True)).to_be_checked()
-                    ready(page, 8)
-                    print("PASS: desktop reader, SVG images, next/previous and read-all")
+                    ready(page,1)
+                    expect(page.locator(".sidebar-header")).to_have_count(1)
+                    expect(page.get_by_role("button",name="Previous page",exact=True)).to_be_disabled()
+                    page.get_by_role("button",name="Next page",exact=True).click()
+                    expect(page.locator(".turn-leaf")).to_have_count(1)
+                    # Inspect the running rotation rather than racing the first compositor frame.
+                    assert page.locator(".turn-leaf").evaluate("e=>e.getAnimations().some(a=>a.effect.getTiming().duration>0 && a.effect.getKeyframes().some(f=>String(f.transform).includes('rotateY')))")
+                    ready(page,2)
+                    expect(page).to_have_url(re.compile(r"page=2"))
+                    page.screenshot(path=str(ARTIFACTS/"reader-desktop.png"),full_page=True)
+                    page.get_by_role("button",name="Previous page",exact=True).click();ready(page,1)
+                    page.get_by_label("Go to page",exact=True).select_option("6");ready(page,6)
+                    expect(page).to_have_url(re.compile(r"page=6"))
+                    page.reload();ready(page,6)
+                    page.get_by_role("button",name="Read all pages",exact=True).click()
+                    expect(page.locator(".reader .book-spread")).to_have_count(8)
+                    page.get_by_role("button",name="Read all pages",exact=True).click();ready(page,6)
+                    page.locator(".reader").focus();page.keyboard.press("End");ready(page,8)
+                    expect(page.get_by_role("button",name="Next page",exact=True)).to_be_disabled()
+                    page.keyboard.press("Home");ready(page,1)
+                    print("PASS desktop: real rotation, previous/next, jump, read-all, keyboard, boundaries and refreshable URL")
 
-                    mobile = browser.new_page(viewport={"width": 393, "height": 900}, is_mobile=True)
-                    mobile.goto(STORY_URL.replace("page=1", "page=4"))
-                    ready(mobile, 1)
-                    expect(mobile.locator(".story-eyebrow")).to_have_text("PAGE 04 / 08")
-                    assert mobile.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "Mobile horizontal overflow"
-                    mobile.locator(".story-spread").screenshot(path=str(ARTIFACTS / "reader-mobile.png"))
-                    mobile.get_by_role("button", name="← All short stories", exact=True).click()
+                    mobile = browser.new_page(viewport={"width":393,"height":900},is_mobile=True,has_touch=True)
+                    mobile.goto(STORY_URL.replace("page=1","page=4"));ready(mobile,4)
+                    assert mobile.evaluate("document.documentElement.scrollWidth<=innerWidth")
+                    art=mobile.locator(".reader .book-art").bounding_box();copy=mobile.locator(".reader .book-copy").bounding_box()
+                    assert copy["y"]>=art["y"]+art["height"]-2,"Mobile text must stack below portrait"
+                    mobile.screenshot(path=str(ARTIFACTS/"reader-mobile.png"),full_page=True)
+                    mobile.get_by_role("button",name="Next page",exact=True).click();ready(mobile,5)
+                    expect(mobile).to_have_url(re.compile(r"page=5"))
+                    mobile.emulate_media(reduced_motion="reduce")
+                    mobile.get_by_role("button",name="Next page",exact=True).click();ready(mobile,6)
+                    assert mobile.locator(".reader").evaluate("e=>e.getAnimations({subtree:true}).length") == 0
+                    mobile.get_by_role("button",name="← All short stories",exact=True).click()
                     expect(mobile.locator(".story-cover")).to_have_count(1)
-                    mobile.wait_for_function("document.querySelector('.story-cover img')?.naturalWidth > 0")
-                    mobile.locator(".story-cover").screenshot(path=str(ARTIFACTS / "bookshelf-mobile.png"))
-                    print("PASS: mobile layout, bookshelf, cover artwork and return navigation")
+                    expect(mobile.locator(".reader")).to_have_count(0)
+                    mobile.screenshot(path=str(ARTIFACTS/"bookshelf-mobile.png"),full_page=True)
+                    print("PASS mobile: portrait stacking, no overflow, URL sync, reduced motion and shelf navigation")
+                    assert not errors, errors
                 except Exception:
-                    (ARTIFACTS / "failure.txt").write_text(traceback.format_exc(), encoding="utf-8")
-                    page.screenshot(path=str(ARTIFACTS / "failure.png"), full_page=True)
+                    (ARTIFACTS/"failure.txt").write_text(traceback.format_exc())
+                    page.screenshot(path=str(ARTIFACTS/"failure.png"),full_page=True)
                     raise
                 finally:
                     browser.close()
         finally:
             server.terminate()
-            try:
-                server.wait(timeout=10)
-            except subprocess.TimeoutExpired:
-                server.kill()
-                server.wait(timeout=5)
+            try: server.wait(timeout=10)
+            except subprocess.TimeoutExpired: server.kill();server.wait(timeout=5)
 
 
 if __name__ == "__main__":

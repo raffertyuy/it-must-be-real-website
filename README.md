@@ -15,13 +15,13 @@ Where entertainment meets genuine absurdity. Laugh, cringe, relate—it's all va
 - 🎮 **Games**: Real gaming experiences
 - ✈️ **Travel**: Authentic travel destinations
 - 🎲 **Random**: Anything and everything
-- 📚 **Short Stories**: Illustrated adventures with a page-by-page reader, read-all mode, shareable page links, and downloadable story text. First up: **Rafal and the Robotic Pinky**.
+- 📚 **Short Stories**: Illustrated adventures with an animated portrait-and-prose book, read-all mode, shareable page links, and downloadable story text. First up: **Rafal and the Robotic Pinky**.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.11 or higher
 - pip (Python package installer)
 
 ### Installation
@@ -52,7 +52,7 @@ The app will open in your default browser at `http://localhost:8501`
 
 ## Tech Stack
 
-- **Python 3.8+**: Core programming language
+- **Python 3.11+**: Core programming language
 - **Streamlit**: Web framework for building the interactive app
 - **Streamlit Navigation API**: Custom navigation using `st.navigation()` for labeled pages
 
@@ -69,14 +69,16 @@ it-must-be-real-website/
 │   ├── games/          # Games category images
 │   ├── travel/         # Travel category images
 │   ├── random/         # Random category images
-│   └── short_stories/  # Shared SVG illustration masters
+│   └── short_stories/  # Portrait WebP artwork and legacy SVG masters
 ├── pages/               # Category pages
 │   ├── food.py         # Food page content
 │   ├── games.py        # Games page content
 │   ├── travel.py       # Travel page content
 │   ├── random.py       # Random page content
 │   └── short_stories.py # Bookshelf and illustrated reader
-├── stories/             # JSON story content, catalogue and panel rendering
+├── stories/             # JSON content, catalogue and Python/browser bridge
+│   └── frontend/        # Dependency-free page-turn JavaScript and isolated CSS
+├── scripts/preview_story.py # Standalone interactive review export
 ├── tests/               # Content, artwork and Streamlit integration tests
 ├── docs/short_stories.md # Authoring guide and character continuity bible
 ├── streamlit_app.py     # Main app with navigation and home page
@@ -96,7 +98,7 @@ it-must-be-real-website/
   2. Display title with emoji icon
   3. Show descriptive content
   4. Display images with captions and subheaders
-- **Short Stories**: Repository-owned JSON separates prose from reader logic. One SVG master shares character designs across all panels. Story text remains selectable and images have alt text. No new runtime dependencies or image API keys are needed.
+- **Short Stories**: Repository-owned JSON separates prose from reader logic. Portrait artwork appears beside selectable HTML prose in an isolated Streamlit v2 component. Page flips, keyboard/touch controls, reduced-motion support and shared bookmarks require no external JavaScript packages or image API keys.
 
 ### Key Coding Conventions
 
@@ -109,7 +111,7 @@ it-must-be-real-website/
 
 Open `/short_stories`, or link directly to a page with `/short_stories?story=rafal-robotic-pinky&page=4`.
 
-*Rafal and the Robotic Pinky* contains eight illustrated pages plus a cover. The illustrations are original SVG vector comics, not AI-generated paintings. Shared character definitions keep Rafal, Kyan, and the right-pinky splint consistent. The complete nine-panel master can also be viewed as a contact sheet.
+*Rafal and the Robotic Pinky* contains eight illustrated pages plus a cover. Cyber-futuristic portrait illustrations sit on the left; the revised story is editable JSON rendered as text on the right. Mom handles the hospital trip, Dad loses at Minecraft Bed Wars and Tetris, and Kyan witnesses the extremely questionable AI. The book has a real two-sided page-turn animation and an accessible no-animation reading alternative.
 
 See [the short-story authoring guide](docs/short_stories.md) for the content schema, artwork approach, character bible, accessibility details, and adding another story.
 

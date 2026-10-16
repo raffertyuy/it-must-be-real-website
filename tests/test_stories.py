@@ -1,76 +1,112 @@
-"""Run with: python -m unittest discover -s tests -v"""
+"""Story, asset and security regression tests. Anatomy is reviewed visually, not by code."""
 import copy
+import json
+import tempfile
 import unittest
-import xml.etree.ElementTree as ET
+from pathlib import Path
+from unittest.mock import patch
 
-from stories.library import ART_DIR, load_stories, page_number, reading_minutes, story_markdown
-from stories.render import SVG, XLINK, cover_html, image_html, panel_svg, spread_html
+from stories.library import ROOT, ART_DIR, load_stories, page_number, resolve_art, story_markdown
+from stories.render import book_payload, cover_html, image_html, panel_svg, spread_html
 
 
 class StoryTests(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.story = load_stories()["rafal-robotic-pinky"]
-        cls.master = ET.parse(ART_DIR / cls.story["artwork"]).getroot()
-        cls.nodes = {node.get("id"): node for node in cls.master.iter() if node.get("id")}
+    def setUp(self):
+        self.story = load_stories()["rafal-robotic-pinky"]
 
-    def test_eight_pages_and_cover(self):
+    def test_eight_pages(self):
         self.assertEqual(len(self.story["pages"]), 8)
-        self.assertEqual(len(self.master.findall("{" + SVG + "}use")), 9)
-        self.assertTrue(4 <= reading_minutes(self.story) <= 8)
-
-    def test_all_panels_render_and_references_resolve(self):
-        for scene in ["cover"] + [p["scene"] for p in self.story["pages"]]:
-            root = ET.fromstring(panel_svg(self.story["artwork"], scene))
-            self.assertEqual(root.get("viewBox"), "0 0 800 520")
-        for node in self.master.iter():
-            href = node.get("{" + XLINK + "}href")
-            if href:
-                self.assertIn(href[1:], self.nodes)
-
-    def test_shared_splint_is_only_on_rafals_right_pinky(self):
-        href = "{" + XLINK + "}href"
-        uses = [n.get(href) for n in self.nodes["rafal"].iter()]
-        self.assertIn("#right-pinky-splint", uses)
-        for name in ("kyan", "dad", "rafal-before", "rafal-healed", "rafal-body"):
-            self.assertNotIn("#right-pinky-splint", [n.get(href) for n in self.nodes[name].iter()])
-        straps = [n for n in self.nodes["right-pinky-splint"].iter() if n.get("fill") == "#8dc6de"]
-        self.assertEqual(len(straps), 2)
-        # No mirrored actors: a negative scale would silently swap hands.
-        self.assertNotIn("scale(-", ET.tostring(self.master, encoding="unicode"))
-
-    def test_timeline_and_distinct_scenes(self):
-        href = "{" + XLINK + "}href"
-        self.assertIn("#rafal-before", [n.get(href) for n in self.nodes["pe"].iter()])
-        self.assertIn("#rafal-healed", [n.get(href) for n in self.nodes["healed"].iter()])
         self.assertEqual(len({p["scene"] for p in self.story["pages"]}), 8)
-        self.assertIn("right pinky", self.story["pages"][0]["paragraphs"][1])
+
+    def test_no_demographics_in_narrative(self):
+        text = story_markdown(self.story).lower()
+        for forbidden in ("chinese", "nepali", "twelve", "12-year", "12 year"):
+            self.assertNotIn(forbidden, text)
+
+    def test_mom_handles_the_hospital_trip(self):
+        text = " ".join(self.story["pages"][0]["paragraphs"])
+        self.assertIn("teacher called Mom", text)
+        self.assertIn("She rushed Rafal to the hospital", text)
+        self.assertNotIn("Dad rushed", story_markdown(self.story))
+        self.assertIn("Mom took Rafal back", story_markdown(self.story))
+
+    def test_dad_loses_both_games(self):
+        bed_wars = " ".join(self.story["pages"][3]["paragraphs"])
+        tetris = " ".join(self.story["pages"][5]["paragraphs"])
+        self.assertIn("Rafal won the rematch", bed_wars)
+        self.assertIn("Rafal won. Dad requested a rematch. Rafal won that too.", tetris)
+        self.assertIn("robotic finger", bed_wars)
+        self.assertIn("finger is predicting the future", tetris)
+
+    def test_website_joke_is_preserved(self):
+        ending = " ".join(self.story["pages"][-1]["paragraphs"])
+        self.assertIn("So the AI wasn’t real?", ending)
+        self.assertIn("Of course it was", ending)
+        self.assertIn("It’s on the website.", ending)
+        self.assertIn("edit the score", ending)
+
+    def test_all_images_are_local_decodable_portraits(self):
+        from PIL import Image
+        for name in [self.story["cover_image"]] + [p["image"] for p in self.story["pages"]]:
+            with Image.open(resolve_art(name)) as image:
+                image.verify()
+            with Image.open(resolve_art(name)) as image:
+                self.assertAlmostEqual(image.width / image.height, 2 / 3, places=2)
+                self.assertGreaterEqual(image.width, 280)
+                self.assertLess(resolve_art(name).stat().st_size, 400_000)
+
+    def test_safe_art_paths(self):
+        for path in ("../outside.webp", "/etc/passwd", "https://example.com/x.webp", "missing.webp"):
+            with self.assertRaises(ValueError):
+                resolve_art(path)
 
     def test_page_bookmarks(self):
-        for value, expected in [(None, 1), ("bad", 1), ("../../../etc/passwd", 1), ("-4", 1), ("0", 1), ("999", 8), ("5", 5)]:
+        for value, expected in ((None, 1), ("garbage", 1), ("-4", 1), ("0", 1), ("3", 3), ("999", 8), ({},1)):
             self.assertEqual(page_number(value, 8), expected)
 
-    def test_unknown_scene_and_unsafe_path_rejected(self):
-        with self.assertRaises(ValueError):
-            panel_svg(self.story["artwork"], "missing")
-        with self.assertRaises(ValueError):
-            panel_svg("../../etc/passwd", "cover")
+    def test_portrait_render_and_alt_escape(self):
+        html = image_html(self.story, "cover", 'a "quote" <script>')
+        self.assertIn("data:image/webp;base64,", html)
+        self.assertIn("&quot;quote&quot; &lt;script&gt;", html)
+        self.assertIn('height="960"', html)
 
-    def test_text_and_alt_are_html_escaped(self):
-        page = copy.deepcopy(self.story["pages"][0])
-        page["paragraphs"] = ['<script>alert("no")</script>']
-        html = spread_html(self.story, page, 1)
-        self.assertNotIn("<script>", html)
-        self.assertIn("&lt;script&gt;", html)
-        self.assertIn("&quot;", image_html(self.story, "cover", 'a "quoted" alt'))
+    def test_story_html_is_escaped(self):
+        p = copy.deepcopy(self.story["pages"][0])
+        p["paragraphs"] = ['<script>alert("test")</script>']
+        html = spread_html(self.story, p, 1)
+        self.assertNotIn('<script>', html)
+        self.assertIn('&lt;script&gt;', html)
 
-    def test_transcript_has_all_story_text(self):
-        transcript = story_markdown(self.story)
+    def test_payload_keeps_prose_separate_from_image(self):
+        payload = book_payload(self.story)
+        for original, rendered in zip(self.story["pages"], payload["pages"]):
+            self.assertEqual(original["paragraphs"], rendered["paragraphs"])
+            self.assertTrue(rendered["src"].startswith("data:image/webp;base64,"))
+            self.assertTrue(rendered["alt"])
+
+    def test_transcript_complete(self):
+        text = story_markdown(self.story)
         for page in self.story["pages"]:
             for paragraph in page["paragraphs"]:
-                self.assertIn(paragraph, transcript)
-        self.assertIn(self.story["note"], transcript)
-        self.assertIn("story-cover", cover_html(self.story))
+                self.assertIn(paragraph, text)
+
+    def test_rejects_string_instead_of_paragraph_list(self):
+        bad = copy.deepcopy(self.story)
+        bad["pages"][0]["paragraphs"] = "not a list"
+        with tempfile.TemporaryDirectory() as folder:
+            Path(folder, "bad.json").write_text(json.dumps(bad))
+            load_stories.cache_clear()
+            try:
+                with patch("stories.library.STORY_DIR", Path(folder)):
+                    with self.assertRaises(ValueError):
+                        load_stories()
+            finally:
+                load_stories.cache_clear()
+
+    def test_legacy_vector_stories_remain_supported(self):
+        self.assertIn("viewBox", panel_svg("rafal_robotic_pinky.svg", "pe"))
+        with self.assertRaises(ValueError):
+            panel_svg("rafal_robotic_pinky.svg", "not-a-scene")
 
 
 if __name__ == "__main__":

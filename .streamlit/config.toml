@@ -1,6 +1,3 @@
-[browser]
-title = "If it's on this website, it must be real!"
-
 [server]
 fileWatcherType = "none"
 
