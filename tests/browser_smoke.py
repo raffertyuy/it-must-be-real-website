@@ -11,7 +11,7 @@ from playwright.sync_api import expect, sync_playwright
 ROOT = Path(__file__).resolve().parents[1]
 ARTIFACTS = ROOT / "test-artifacts"
 BASE_URL = "http://127.0.0.1:8501"
-STORY_URL = BASE_URL + "/short-stories?story=rafal-robotic-pinky&page=1"
+STORY_URL = BASE_URL + "/short_stories?story=rafal-robotic-pinky&page=1"
 
 
 def wait_for_server(process):
@@ -31,6 +31,7 @@ def wait_for_server(process):
 def ready(page, count):
     expect(page.locator(".story-spread")).to_have_count(count, timeout=30000)
     expect(page.locator('[data-testid="stException"]')).to_have_count(0)
+    expect(page.get_by_text("Page not found", exact=True)).to_have_count(0)
     # Scroll each panel into view: read-all intentionally lazy-loads illustrations.
     for image in page.locator(".story-art img").all():
         image.scroll_into_view_if_needed()

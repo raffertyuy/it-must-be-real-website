@@ -107,7 +107,7 @@ it-must-be-real-website/
 
 ### Short Stories
 
-Open `/short-stories`, or link directly to a page with `/short-stories?story=rafal-robotic-pinky&page=4`.
+Open `/short_stories`, or link directly to a page with `/short_stories?story=rafal-robotic-pinky&page=4`.
 
 *Rafal and the Robotic Pinky* contains eight illustrated pages plus a cover. The illustrations are original SVG vector comics, not AI-generated paintings. Shared character definitions keep Rafal, Kyan, and the right-pinky splint consistent. The complete nine-panel master can also be viewed as a contact sheet.
 
@@ -119,7 +119,7 @@ Run the automated checks from the repository root:
 python -m unittest discover -s tests -v
 ```
 
-Install `requirements.txt` to run the Streamlit integration tests; they explicitly skip when Streamlit is unavailable. The `Short story tests` GitHub Actions workflow installs the existing requirements and runs all tests on pull requests and pushes to `main`.
+Install `requirements.txt` to run the Streamlit integration tests; they explicitly skip when Streamlit is unavailable. The `Short story tests` GitHub Actions workflow installs the existing requirements and runs all tests on pull requests and pushes to `main`. It also runs a real-browser desktop/mobile smoke test and uploads screenshots; Playwright is a CI/test-only dependency.
 
 ## Contributing
 

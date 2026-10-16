@@ -64,7 +64,8 @@ food = st.Page("pages/food.py", title="Food", icon="🍔")
 games = st.Page("pages/games.py", title="Games", icon="🎮")
 travel = st.Page("pages/travel.py", title="Travel", icon="✈️")
 random = st.Page("pages/random.py", title="Random", icon="🎲")
-short_stories = st.Page("pages/short_stories.py", title="Short Stories", icon="📚", url_path="short-stories")
+# Match the source filename for cold-start deep links before st.navigation is initialised.
+short_stories = st.Page("pages/short_stories.py", title="Short Stories", icon="📚", url_path="short_stories")
 
 # Create navigation
 pg = st.navigation([home, food, games, travel, random, short_stories])

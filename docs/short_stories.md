@@ -2,9 +2,9 @@
 
 ## Reader
 
-The existing Streamlit app registers **Short Stories** at `/short-stories`, with a home-page entry point. The bookshelf currently contains *Rafal and the Robotic Pinky*, an eight-page story plus a cover. Readers can turn pages, jump to a page, read everything vertically, restart, or download a Markdown transcript.
+The existing Streamlit app registers **Short Stories** at `/short_stories`, with a home-page entry point. The bookshelf currently contains *Rafal and the Robotic Pinky*, an eight-page story plus a cover. Readers can turn pages, jump to a page, read everything vertically, restart, or download a Markdown transcript.
 
-Bookmarks use `/short-stories?story=rafal-robotic-pinky&page=4`. Page values are clamped to the valid range, and unknown story IDs return the bookshelf with a notice. Only catalogue IDs are accepted; query strings never become filesystem paths. Native Streamlit controls remain keyboard-accessible. Story text is HTML text, not pixels inside an illustration. Images have descriptive alt text. Book CSS is scoped so the existing category image sizes remain unchanged.
+Bookmarks use `/short_stories?story=rafal-robotic-pinky&page=4`. The route matches the page filename to support Streamlit's initial page lookup before custom navigation is initialised. Page values are clamped to the valid range, and unknown story IDs return the bookshelf with a notice. Only catalogue IDs are accepted; query strings never become filesystem paths. Native Streamlit controls remain keyboard-accessible. Story text is HTML text, not pixels inside an illustration. Images have descriptive alt text. Book CSS is scoped so the existing category image sizes remain unchanged.
 
 ## Artwork decision and character bible
 
@@ -25,5 +25,7 @@ The exact same source definitions are reused rather than redrawing approximate l
 2. Add its SVG master under `images/short_stories/`. Include a `cover` symbol and one symbol per page, with `viewBox="0 0 800 520"`. Put shared character definitions in `defs` and reference them with `use`. The bookshelf discovers the JSON automatically; no new route is necessary.
 3. Run `python -m unittest discover -s tests -v` from the repository root. Streamlit is required for the integration tests; without it those tests explicitly skip. GitHub Actions installs the existing requirements and runs both suites.
 4. Run `streamlit run streamlit_app.py`. Check the home link, sidebar, previous/next boundaries, page picker, read-all toggle, restart, download, malformed bookmarks, and mobile layout. Visually check all illustrations for story continuity.
+
+The workflow also installs Playwright as a test-only dependency and runs `python tests/browser_smoke.py` against a real Streamlit server. This checks cold-start deep links, image decoding, page controls, read-all, and the mobile bookshelf, and uploads screenshots and the server log as `story-browser-checks`. For local browser tests, install `playwright` and run `python -m playwright install chromium` first. It is not needed to run the website.
 
 No new runtime packages are required. `functools.lru_cache` caches local content and rendered SVG; content changes take effect after an app process restart. The reader uses only trusted repository-owned content, HTML-escapes prose and attributes, and does not fetch user-provided image URLs.
