@@ -31,10 +31,11 @@ def wait_for_server(process):
 def ready(page, count):
     expect(page.locator(".story-spread")).to_have_count(count, timeout=30000)
     expect(page.locator('[data-testid="stException"]')).to_have_count(0)
-    page.wait_for_function("""() => {
-        const images = [...document.querySelectorAll('.story-art img')];
-        return images.length > 0 && images.every(img => img.complete && img.naturalWidth > 0);
-    }""", timeout=30000)
+    # Scroll each panel into view: read-all intentionally lazy-loads illustrations.
+    for image in page.locator(".story-art img").all():
+        image.scroll_into_view_if_needed()
+        page.wait_for_function("img => img.complete && img.naturalWidth > 0",
+                               arg=image.element_handle(), timeout=30000)
 
 
 def main():
