@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.11'
+          python-version: '3.13'
       - name: Prepare source and offline test dependencies
         run: |
           mkdir -p /tmp/story-workbench/source /tmp/story-workbench/wheels
@@ -22,4 +22,5 @@ jobs:
         with:
           name: story-reader-workbench
           path: /tmp/story-workbench/
+          include-hidden-files: true
           retention-days: 1
