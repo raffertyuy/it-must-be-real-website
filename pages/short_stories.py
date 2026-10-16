@@ -29,8 +29,6 @@ def bookshelf():
             del st.query_params[name]
 
 
-st.title("📚 Short Stories")
-st.write("Small adventures. Questionable technology. Entirely real, obviously.")
 try:
     catalogue = load_stories()
 except (OSError, ValueError):
@@ -40,6 +38,8 @@ except (OSError, ValueError):
 slug = st.query_params.get("story")
 story = catalogue.get(slug)
 if story is None:
+    st.title("📚 Short Stories")
+    st.write("Small adventures. Questionable technology. Entirely real, obviously.")
     if slug:
         st.warning("That story is not on this shelf. Choose one below.")
     if not catalogue:
@@ -50,7 +50,7 @@ if story is None:
         st.button("Open the book →", key="read_" + item["id"], type="primary", on_click=open_story, args=(item["id"],))
 else:
     st.button("← All short stories", on_click=bookshelf)
-    st.header(story["title"])
+    st.title(story["title"])
     st.caption(story["subtitle"])
     number = page_number(st.query_params.get("page", "1"), len(story["pages"]))
     if st.query_params.get("page") != str(number):

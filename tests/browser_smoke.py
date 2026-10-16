@@ -60,7 +60,8 @@ def main():
                     expect(page.get_by_role("button",name="Previous page",exact=True)).to_be_disabled()
                     page.get_by_role("button",name="Next page",exact=True).click()
                     expect(page.locator(".turn-leaf")).to_have_count(1)
-                    assert "matrix3d" in page.locator(".turn-leaf").evaluate("e=>getComputedStyle(e).transform")
+                    # Inspect the running rotation rather than racing the first compositor frame.
+                    assert page.locator(".turn-leaf").evaluate("e=>e.getAnimations().some(a=>a.effect.getTiming().duration>0 && a.effect.getKeyframes().some(f=>String(f.transform).includes('rotateY')))")
                     ready(page,2)
                     expect(page).to_have_url(re.compile(r"page=2"))
                     page.screenshot(path=str(ARTIFACTS/"reader-desktop.png"),full_page=True)

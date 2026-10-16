@@ -161,7 +161,7 @@ export default function renderBook(component) {
         state.animation=null; state.page=target; state.turning=false;
         stage.classList.remove('is-turning'); stage.style.height='';
         state.paint();
-        if (narrow.matches) root.scrollIntoView({block:"start",behavior:"instant"});
+        if (narrow.matches || root.getBoundingClientRect().top < 50) root.scrollIntoView({block:"start",behavior:"instant"});
         emit();
       }
     }
