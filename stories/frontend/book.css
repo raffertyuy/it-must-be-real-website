@@ -73,3 +73,6 @@
  .book-copy { background:white; color:#101827; }
  .book-copy h2 { color:#101827; }
 }
+/* A filter on the rotating parent flattens its 3D children and mirrors the text.
+   Keep shading on the individual faces so the reverse shows the next portrait. */
+.turn-leaf { filter:none!important; }
