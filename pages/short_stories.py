@@ -4,6 +4,16 @@ import streamlit as st
 from stories.library import ROOT, load_stories, page_number, reading_minutes, story_markdown
 from stories.render import cover_html, spread_html
 
+# On a cold server, Streamlit may execute a pages/ file before the entrypoint.
+# Bootstrap the site's custom navigation rather than leaving a legacy sidebar.
+if not st.session_state.get("_site_navigation_ready", False):
+    st.session_state["_story_entry_query"] = dict(st.query_params)
+    st.session_state["_open_story_after_bootstrap"] = True
+    st.switch_page("streamlit_app.py")
+pending_query = st.session_state.pop("_story_entry_query", None)
+if pending_query is not None:
+    st.query_params.from_dict(pending_query)
+
 # Keep the app's standard CSS-loading pattern; book overrides are scoped.
 with open(ROOT / ".streamlit/style.css", encoding="utf-8") as f:
     st.markdown("<style>" + f.read() + "</style>", unsafe_allow_html=True)

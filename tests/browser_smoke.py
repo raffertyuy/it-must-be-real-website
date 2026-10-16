@@ -31,6 +31,7 @@ def wait_for_server(process):
 
 def ready(page, count):
     expect(page.locator(".story-spread")).to_have_count(count, timeout=30000)
+    expect(page.locator(".sidebar-header")).to_have_count(1)
     expect(page.locator('[data-testid="stException"]')).to_have_count(0)
     expect(page.get_by_text("Page not found", exact=True)).to_have_count(0)
     # Scroll each panel into view: read-all intentionally lazy-loads illustrations.
@@ -68,8 +69,9 @@ def main():
                     print("PASS: desktop reader, SVG images, next/previous and read-all")
 
                     mobile = browser.new_page(viewport={"width": 393, "height": 900}, is_mobile=True)
-                    mobile.goto(STORY_URL)
+                    mobile.goto(STORY_URL.replace("page=1", "page=4"))
                     ready(mobile, 1)
+                    expect(mobile.locator(".story-eyebrow")).to_have_text("PAGE 04 / 08")
                     assert mobile.evaluate("document.documentElement.scrollWidth <= window.innerWidth"), "Mobile horizontal overflow"
                     mobile.locator(".story-spread").screenshot(path=str(ARTIFACTS / "reader-mobile.png"))
                     mobile.get_by_role("button", name="← All short stories", exact=True).click()

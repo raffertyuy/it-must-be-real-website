@@ -69,6 +69,11 @@ short_stories = st.Page("pages/short_stories.py", title="Short Stories", icon="ð
 
 # Create navigation
 pg = st.navigation([home, food, games, travel, random, short_stories])
+st.session_state["_site_navigation_ready"] = True
+# A first-ever deep link may enter through Streamlit's legacy pages loader.
+# Finish that bootstrap via the registered page, preserving its saved query.
+if st.session_state.pop("_open_story_after_bootstrap", False):
+    st.switch_page("pages/short_stories.py")
 
 # Add custom sidebar content
 with st.sidebar:
