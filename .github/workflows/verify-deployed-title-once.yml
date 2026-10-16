@@ -18,7 +18,7 @@ jobs:
         run: |
           python -m pip install playwright
           python -m playwright install --with-deps chromium
-      - name: Inspect the actual hosted bookshelf and source links
+      - name: Inspect the actual hosted bookshelf and source reference
         run: |
           python - <<'PY'
           import json
@@ -42,11 +42,21 @@ jobs:
                       entry = {'url': urlsplit(frame.url)._replace(query='', fragment='').geturl()}
                       try:
                           entry['headings'] = frame.locator('h1,h2,h3').all_text_contents()
-                          entry['source_links'] = frame.locator('a[href*="github.com"]').evaluate_all('(els) => els.map(e => ({text: e.textContent, href: e.href}))')
-                          entry['buttons'] = frame.locator('button').evaluate_all('(els) => els.map(e => ({text: e.textContent, label: e.getAttribute("aria-label"), title: e.title}))')
                           if frame.get_by_role('heading', name=expected, exact=True).count():
                               result['verified'] = True
-                          entry['text_excerpt'] = frame.locator('body').inner_text(timeout=5000)[:2500]
+                          source = frame.get_by_role('button', name='source', exact=True)
+                          if source.count():
+                              try:
+                                  with page.expect_popup(timeout=10000) as pending:
+                                      source.click()
+                                  popup = pending.value
+                                  popup.wait_for_timeout(2000)
+                                  entry['github_source_url'] = popup.url
+                                  popup.close()
+                              except Exception as exc:
+                                  entry['source_error'] = str(exc)[:400]
+                                  entry['source_links'] = frame.locator('a[href*="github.com"]').evaluate_all('(els) => els.map(e => ({text: e.textContent, href: e.href}))')
+                          entry['text_excerpt'] = frame.locator('body').inner_text(timeout=5000)[:1800]
                       except Exception as exc:
                           entry['error'] = str(exc)[:300]
                       result['frames'].append(entry)
