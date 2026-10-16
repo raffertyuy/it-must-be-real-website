@@ -1,0 +1,33 @@
+name: Short story tests
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m compileall -q streamlit_app.py pages stories tests
+      - run: python -m unittest discover -s tests -v
+      - name: Install browser-test tools
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test real desktop and mobile readers
+        run: python tests/browser_smoke.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: story-browser-checks
+          path: test-artifacts/
+          if-no-files-found: ignore
+          retention-days: 14

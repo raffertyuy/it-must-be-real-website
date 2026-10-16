@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2400" height="1560" viewBox="0 0 2400 1560" role="img" aria-labelledby="master-title">
+<title id="master-title">Rafal and the Robotic Pinky — complete nine-panel illustration master</title>
+<desc>Original vector comic. Shared character symbols preserve faces, clothing and anatomical right-pinky placement. Reading order: cover, then eight pages, left to right.</desc>
+<defs>
+  <pattern id="dots" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#22354c" opacity=".09"/></pattern>
+  <pattern id="night-dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="1.5" fill="#a5ddd6" opacity=".15"/></pattern>
+  <g id="spark" fill="none" stroke="#ffc65c" stroke-width="4" stroke-linecap="round"><path d="M0 -10V10M-10 0H10"/></g>
+  <g id="right-hand" fill="#edbe94" stroke="#22354c" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M16 74L8 51L6 23Q6 18 10 18Q14 18 14 23V38V9Q14 4 18 4Q22 4 22 9V35V4Q22 0 26 0Q30 0 30 4V35V10Q30 5 34 5Q38 5 38 10V45L45 35Q49 32 51 36Q53 39 49 45L40 64Q35 74 31 76Z"/>
+    <path d="M20 52Q30 46 37 51" fill="none" stroke="#c28b70"/>
+  </g>
+  <!-- Front-facing anatomical RIGHT hand: thumb faces inward (viewer right), pinky is outermost (viewer left). Never mirror this group. -->
+  <g id="right-pinky-splint" stroke="#22354c" stroke-width="1.5">
+    <rect x="5" y="18" width="10" height="38" rx="4" fill="#dfe8ec"/>
+    <path d="M8 23V51" stroke="#ffffff" stroke-width="2"/>
+    <rect x="4" y="28" width="12" height="5" rx="1.5" fill="#8dc6de"/>
+    <rect x="4" y="43" width="12" height="5" rx="1.5" fill="#8dc6de"/>
+  </g>
+  <g id="rafal-body" stroke="#22354c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="87" cy="291" rx="67" ry="9" fill="#22354c" opacity=".12" stroke="none"/>
+    <path d="M56 186L54 273H80L90 215L100 273H126L122 186Z" fill="#31485e"/>
+    <path d="M54 265H80V283H43Q39 272 54 265ZM100 265H125L139 277V283H99Z" fill="#f7f2e7"/>
+    <path d="M43 283H80M101 283H138" fill="none"/>
+    <path d="M58 120Q42 125 30 145L23 159L40 170L63 147M120 124Q138 142 143 179L128 185L115 150" fill="#edbe94"/>
+    <path d="M128 177Q142 170 145 184L143 197Q139 204 132 198Z" fill="#edbe94"/>
+    <path d="M63 111L48 126L48 145L61 150L56 195Q91 203 127 195L120 150L135 143L128 123L112 113Z" fill="#198d91"/>
+    <path d="M75 113Q85 131 105 113" fill="#edbe94"/>
+    <path d="M94 142H81L78 158H89L85 174L107 152H94Z" fill="#ffc65c" stroke="none"/>
+    <path d="M58 183Q88 191 125 184" fill="none" stroke="#117379"/>
+    <ellipse cx="48" cy="73" rx="8" ry="12" fill="#edbe94"/>
+    <ellipse cx="129" cy="73" rx="8" ry="12" fill="#edbe94"/>
+    <path d="M48 59Q48 27 89 27Q130 26 130 61L126 89Q120 113 90 116Q59 115 51 93Z" fill="#edbe94"/>
+    <path d="M46 69Q32 22 64 20Q81 2 109 16Q138 14 135 63L128 74L122 47Q105 57 77 44Q65 63 51 61L50 75Z" fill="#1d2939"/>
+    <path d="M68 72L78 70M101 70L111 72" fill="none" stroke-width="2.5"/>
+    <ellipse cx="74" cy="80" rx="3" ry="4" fill="#22354c" stroke="none"/><ellipse cx="107" cy="80" rx="3" ry="4" fill="#22354c" stroke="none"/>
+    <path d="M91 81L88 91H93" fill="none" stroke="#c28b70" stroke-width="2"/>
+    <use xlink:href="#right-hand" transform="translate(4 103)"/>
+  </g>
+  <g id="rafal"><use xlink:href="#rafal-body"/><path d="M80 99Q90 108 102 98" fill="none" stroke="#22354c" stroke-width="2.5" stroke-linecap="round"/><use xlink:href="#right-pinky-splint" transform="translate(4 103)"/></g>
+  <g id="rafal-before"><use xlink:href="#rafal-body"/><path d="M80 102Q90 94 102 102" fill="none" stroke="#22354c" stroke-width="2.5" stroke-linecap="round"/></g>
+  <g id="rafal-healed"><use xlink:href="#rafal-body"/><path d="M80 99Q90 108 102 98" fill="none" stroke="#22354c" stroke-width="2.5" stroke-linecap="round"/></g>
+  <g id="kyan" stroke="#22354c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="89" cy="291" rx="65" ry="9" fill="#22354c" opacity=".12" stroke="none"/>
+    <path d="M57 189L54 272H80L90 218L100 272H126L123 189Z" fill="#355675"/>
+    <path d="M54 268H80V284H43Q39 276 54 268ZM100 268H125L138 278V284H99Z" fill="#f7f2e7"/>
+    <path d="M44 284H80M100 284H138"/>
+    <path d="M62 118L46 130L34 182L48 190L64 154M120 122L136 135L146 181L131 187L117 148" fill="#d78347"/>
+    <path d="M36 180Q30 193 41 201Q51 203 52 190L48 180M132 178Q148 173 149 187L144 198Q134 202 131 190Z" fill="#bc865f"/>
+    <path d="M63 109Q88 100 114 111L130 126L124 196Q90 205 55 196L52 129Z" fill="#eb9855"/>
+    <path d="M69 111L90 131L110 112M79 127V152M100 127V152M72 174L108 174L111 190H70Z" fill="none" stroke="#a65f38" stroke-width="2"/>
+    <path d="M81 158H88M94 158H101" stroke="#fff1d2"/>
+    <ellipse cx="48" cy="74" rx="8" ry="12" fill="#bc865f"/><ellipse cx="129" cy="74" rx="8" ry="12" fill="#bc865f"/>
+    <path d="M48 57Q49 29 89 28Q129 29 129 61L126 91Q118 114 90 117Q59 114 51 92Z" fill="#bc865f"/>
+    <path d="M47 73Q33 56 41 40Q34 22 51 21Q54 8 68 15Q80 2 92 13Q110 3 118 17Q139 16 137 35Q148 48 133 70L124 59L121 43Q109 49 100 42Q85 50 76 42Q64 52 53 46L52 70Z" fill="#252936"/>
+    <path d="M65 71L79 68M101 68L114 72" fill="none" stroke-width="2.5"/>
+    <ellipse cx="73" cy="81" rx="3" ry="4" fill="#22354c" stroke="none"/><ellipse cx="107" cy="81" rx="3" ry="4" fill="#22354c" stroke="none"/>
+    <path d="M91 82L88 92H93" fill="none" stroke="#915e45" stroke-width="2"/>
+    <path d="M79 100Q92 109 103 98" fill="none" stroke-width="2.5"/>
+  </g>
+  <g id="dad" stroke="#22354c" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="89" cy="320" rx="65" ry="9" fill="#22354c" opacity=".12" stroke="none"/>
+    <path d="M55 204L55 304H82L90 235L102 304H129L123 204Z" fill="#263b52"/>
+    <path d="M53 299H82V315H41Q38 304 53 299ZM103 299H129L141 311V315H102Z" fill="#f5eee0"/>
+    <path d="M52 124L32 139L29 209L44 217L64 153M123 122L141 140L149 210L132 218L113 150" fill="#dca77d"/>
+    <path d="M60 117L48 132L48 155L58 158L53 217H128L121 157L137 151L131 128L111 117Z" fill="#687eae"/>
+    <path d="M76 117L87 133L101 117M88 135V160" fill="none"/>
+    <path d="M49 58Q48 23 88 23Q130 23 131 64L126 91Q116 119 89 120Q60 117 51 93Z" fill="#dca77d"/>
+    <path d="M49 69Q30 28 61 17Q83 1 114 19Q139 27 131 66L123 58L122 39Q96 53 65 38L53 64Z" fill="#252936"/>
+    <rect x="56" y="65" width="28" height="21" rx="7" fill="#eef1e7" fill-opacity=".5"/><rect x="95" y="65" width="28" height="21" rx="7" fill="#eef1e7" fill-opacity=".5"/><path d="M84 72H95"/>
+    <circle cx="71" cy="75" r="2.5"/><circle cx="108" cy="75" r="2.5"/>
+    <path d="M80 101Q91 110 104 98" fill="none"/>
+  </g>
+  <g id="laptop" stroke="#22354c" stroke-width="4" stroke-linejoin="round"><rect x="0" y="0" width="154" height="92" rx="8" fill="#3d6079"/><rect x="11" y="11" width="132" height="67" rx="3" fill="#b3e2da"/><path d="M-14 94H168L155 107H0Z" fill="#d9e2e6"/><path d="M60 99H96" stroke-width="3"/><path d="M59 39L49 46L59 53M93 39L103 46L93 53M81 34L72 59" fill="none" stroke="#198d91"/></g>
+  <g id="bed" stroke="#22354c" stroke-width="4" stroke-linejoin="round"><path d="M0 20H45V90H0Z" fill="#c48b55"/><path d="M45 47H253V100H45Z" fill="#e97070"/><path d="M45 31H105V62H45Z" fill="#fff4d8"/><path d="M108 45H252V78H108Z" fill="#efab80"/><path d="M253 33H271V113H253ZM8 90H27V117H8Z" fill="#c48b55"/></g>
+  <g id="cube" stroke="#22354c" stroke-width="4" stroke-linejoin="round"><rect width="65" height="65" rx="5" fill="#ffc65c"/><rect x="12" y="14" width="12" height="15" fill="#22354c" stroke="none"/><rect x="40" y="14" width="12" height="15" fill="#22354c" stroke="none"/><path d="M18 44H46" fill="none"/></g>
+  <g id="pillow" stroke="#22354c" stroke-width="3"><path d="M0 7Q38 -7 77 6Q88 27 79 53Q40 65 0 53Q-10 29 0 7Z" fill="#fff4d8"/><path d="M7 15Q40 7 72 15M7 46Q41 54 71 45" fill="none" stroke="#dec7a6" stroke-width="2"/></g>
+  <symbol id="cover" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#20334d"/><rect width="800" height="520" fill="url(#night-dots)"/>
+    <circle cx="403" cy="266" r="193" fill="#2b696e"/><circle cx="403" cy="266" r="167" fill="none" stroke="#72bcb3" stroke-width="2" stroke-dasharray="7 10"/>
+    <path d="M43 425H758" stroke="#94c5bf" stroke-width="2" opacity=".3"/>
+    <use xlink:href="#rafal" transform="translate(226 113) scale(1.15)"/><use xlink:href="#kyan" transform="translate(418 123) scale(1.1)"/>
+    <g transform="translate(59 130) rotate(-12)"><use xlink:href="#cube"/></g>
+    <g fill="#9ccbdc" stroke="#20334d" stroke-width="3"><path d="M635 304h34v34h34v34h-68Z"/><path d="M617 391h90v28h-90Z"/></g>
+    <use xlink:href="#bed" transform="translate(577 128) scale(.52) rotate(7)"/>
+    <use xlink:href="#spark" x="172" y="307"/><use xlink:href="#spark" x="635" y="68"/><use xlink:href="#spark" x="686" y="252"/>
+    <rect x="46" y="35" width="218" height="37" rx="18" fill="#ffc65c"/><text x="155" y="60" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="700" fill="#20334d">100% DAD-CERTIFIED</text>
+    <path d="M233 219L167 207L112 250" fill="none" stroke="#ffc65c" stroke-width="2"/><text x="45" y="277" font-family="monospace" font-size="19" fill="#ffc65c">PINK-E 9000</text>
+    <text x="400" y="481" text-anchor="middle" font-family="monospace" font-size="17" letter-spacing="3" fill="#c6e8df">SMALL FINGER. BIG MAIN-CHARACTER ENERGY.</text>
+  </symbol>
+  <symbol id="pe" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#f7e8c9"/><rect width="800" height="520" fill="url(#dots)"/>
+    <path d="M0 323H800V520H0Z" fill="#9ccbbd"/><path d="M-20 440H820M160 323L56 520M640 323L744 520" stroke="#fff4d8" stroke-width="5" fill="none"/>
+    <rect x="560" y="46" width="151" height="99" rx="4" fill="#f9f1df" stroke="#22354c" stroke-width="4"/><rect x="609" y="83" width="53" height="41" fill="none" stroke="#cf7964" stroke-width="4"/><path d="M605 139H671M611 140L620 180H655L665 140" fill="none" stroke="#22354c" stroke-width="3"/>
+    <use xlink:href="#rafal-before" transform="translate(274 155)"/><use xlink:href="#kyan" transform="translate(464 145) scale(1.04)"/>
+    <g stroke="#22354c" stroke-width="3"><circle cx="181" cy="220" r="43" fill="#e79852"/><path d="M139 220H223M181 177V263M151 188Q190 219 151 252M211 190Q172 220 211 251" fill="none"/></g>
+    <path d="M68 201L115 209M60 226H109M83 248L118 243" stroke="#c08453" stroke-width="4" stroke-linecap="round"/>
+    <text x="236" y="124" transform="rotate(-7 236 124)" font-family="sans-serif" font-size="46" font-weight="900" fill="#22354c">BONK!</text>
+    <use xlink:href="#spark" x="244" y="233"/>
+  </symbol>
+  <symbol id="hospital" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#e2eee5"/><path d="M0 110H800M0 230H800M0 350H800M170 0V410M405 0V410M638 0V410" stroke="#bfd8d0" stroke-width="2"/>
+    <rect y="409" width="800" height="111" fill="#acd1cb"/><rect x="476" y="57" width="256" height="263" rx="16" fill="#344d66" stroke="#22354c" stroke-width="5"/>
+    <g transform="translate(548 96) scale(2.1)" opacity=".9"><use xlink:href="#right-hand" fill="#e1eff1"/><path d="M10 24V34M10 40V49M18 12V33M26 9V32M34 14V40M18 47L24 61M33 48L26 62" stroke="#f7f6e8" stroke-width="3" fill="none"/><circle cx="10" cy="36" r="10" fill="none" stroke="#ffc65c" stroke-width="2"/></g>
+    <text x="604" y="346" text-anchor="middle" font-family="monospace" font-size="16" fill="#344d66">TINY CRACK. BIG DRAMA.</text>
+    <use xlink:href="#dad" transform="translate(89 126) scale(.96)"/><use xlink:href="#rafal" transform="translate(275 156)"/>
+    <rect x="68" y="55" width="294" height="42" rx="21" fill="#fff4d8"/><text x="215" y="83" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="700" fill="#22354c">“A robotic finger!”</text>
+    <use xlink:href="#spark" x="277" y="280"/>
+  </symbol>
+  <symbol id="diagnostics" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#fff0d5"/><rect width="800" height="520" fill="url(#dots)"/><circle cx="399" cy="266" r="193" fill="#e3dec8"/>
+    <use xlink:href="#rafal" transform="translate(154 145) scale(1.05)"/><use xlink:href="#kyan" transform="translate(460 145) scale(1.05)"/>
+    <path d="M77 454H723" stroke="#22354c" stroke-width="7" stroke-linecap="round"/>
+    <use xlink:href="#laptop" transform="translate(332 345) scale(.85)"/>
+    <g transform="translate(547 309) rotate(8)" stroke="#22354c" stroke-width="3"><rect width="67" height="86" rx="4" fill="#fff9e8"/><path d="M14 22H54M14 36H48M14 50H52M14 64H37" stroke="#7ca7ab"/></g>
+    <text x="393" y="210" text-anchor="middle" font-family="sans-serif" font-size="85" font-weight="700" fill="#198d91">?</text>
+    <rect x="223" y="45" width="354" height="42" rx="21" fill="#22354c"/><text x="400" y="73" text-anchor="middle" font-family="monospace" font-size="20" fill="#fff0d5">DEFINITELY SCIENCE.</text>
+  </symbol>
+  <symbol id="bed_wars" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#243957"/><rect width="800" height="520" fill="url(#night-dots)"/>
+    <path d="M149 251L239 189H566L656 251L566 311H238Z" fill="#70ad91" stroke="#12293d" stroke-width="4"/><path d="M149 251L237 311H566L655 251V286L566 345H238L149 286Z" fill="#a9805b" stroke="#12293d" stroke-width="4"/>
+    <use xlink:href="#bed" transform="translate(271 98) scale(1.06)"/><use xlink:href="#pillow" transform="translate(154 95) rotate(-10) scale(.85)"/><use xlink:href="#pillow" transform="translate(589 171) rotate(12) scale(.8)"/>
+    <text x="587" y="99" font-family="sans-serif" font-size="32" font-weight="700" fill="#ffc65c">Z z z</text>
+    <rect x="246" y="26" width="308" height="32" rx="16" fill="#49687b"/><text x="400" y="48" text-anchor="middle" font-family="monospace" font-size="15" fill="#d9eee1">DAD’S IMAGINARY GAME MODE</text>
+    <use xlink:href="#rafal" transform="translate(72 287) scale(.7)"/><use xlink:href="#kyan" transform="translate(590 287) scale(.7)"/><use xlink:href="#laptop" transform="translate(337 382) scale(.8)"/>
+    <path d="M296 360Q398 334 509 360" stroke="#8bc9bd" stroke-dasharray="4 8" fill="none" stroke-width="2"/>
+  </symbol>
+  <symbol id="geometry_dash" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#e2ecec"/><rect width="800" height="520" fill="url(#dots)"/>
+    <path d="M76 293H732" stroke="#22354c" stroke-width="5"/><path d="M313 292L341 237L368 292M379 292L407 237L435 292M446 292L474 237L502 292M513 292L541 237L569 292" fill="#6b83ae" stroke="#22354c" stroke-width="3"/>
+    <path d="M154 278Q237 74 459 124Q592 144 651 278" fill="none" stroke="#198d91" stroke-width="25"/><path d="M154 278Q237 74 459 124Q592 144 651 278" fill="none" stroke="#f3e9cf" stroke-width="3" stroke-dasharray="12 12"/>
+    <use xlink:href="#cube" transform="translate(273 96) rotate(-9) scale(.88)"/>
+    <g fill="#e49452" stroke="#22354c" stroke-width="3"><path d="M248 285L261 250L274 285ZM597 285L610 250L623 285Z"/><path d="M241 289H281M590 289H630"/></g>
+    <rect x="526" y="65" width="201" height="51" rx="8" fill="#ffc65c" stroke="#22354c" stroke-width="3"/><text x="626" y="97" text-anchor="middle" font-family="sans-serif" font-size="23" font-weight="700" fill="#22354c">DETOUR</text><path d="M700 86H716L710 79M716 86L710 93" stroke="#22354c" stroke-width="3" fill="none"/>
+    <use xlink:href="#rafal" transform="translate(70 304) scale(.67)"/><use xlink:href="#kyan" transform="translate(597 304) scale(.67)"/><use xlink:href="#laptop" transform="translate(338 392) scale(.76)"/>
+    <text x="400" y="355" text-anchor="middle" font-family="monospace" font-size="15" fill="#36516b">AN ENTIRELY IMAGINARY SOLUTION.</text>
+  </symbol>
+  <symbol id="tetris" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#243957"/><rect width="800" height="520" fill="url(#night-dots)"/>
+    <rect x="241" y="47" width="319" height="283" rx="12" fill="#142a43" stroke="#78afa8" stroke-width="3"/>
+    <g stroke="#142a43" stroke-width="4"><path d="M260 228H312V280H364V315H260Z" fill="#e99654"/><path d="M364 262H416V228H468V315H364Z" fill="#72bfb3"/><path d="M468 280H520V315H468Z" fill="#ad98cb"/><path d="M476 63H514V219H476Z" fill="#85c3de"/><path d="M268 138H311V179H354V220H268Z" fill="#e1b95d"/></g>
+    <g transform="translate(329 91) rotate(-7)" stroke="#22354c" stroke-width="2.5"><rect width="119" height="148" rx="6" fill="#fff0d5"/><path d="M17 63H101M17 82H86M17 101H94M17 120H74" stroke="#a1b9b5"/><text x="59" y="39" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#22354c" stroke="none" font-weight="700">HOMEWORK</text></g>
+    <use xlink:href="#rafal" transform="translate(67 285) scale(.72)"/><use xlink:href="#kyan" transform="translate(596 285) scale(.72)"/><use xlink:href="#laptop" transform="translate(338 387) scale(.8)"/>
+    <text x="400" y="364" text-anchor="middle" font-family="monospace" font-size="16" fill="#ffc65c">PREMIUM PLAN: ACTUALLY DO IT.</text>
+  </symbol>
+  <symbol id="bedtime" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#e5dfeb"/><rect width="800" height="520" fill="url(#dots)"/>
+    <rect x="55" y="43" width="155" height="173" rx="50" fill="#273d59" stroke="#22354c" stroke-width="4"/><path d="M144 77Q103 90 124 129Q162 151 178 113Q149 126 144 77Z" fill="#fff0c4"/><use xlink:href="#spark" x="86" y="153"/>
+    <circle cx="673" cy="101" r="49" fill="#fff0d5" stroke="#22354c" stroke-width="4"/><path d="M673 69V101L694 115" fill="none" stroke="#22354c" stroke-width="5" stroke-linecap="round"/>
+    <rect y="424" width="800" height="96" fill="#c4b8ce"/>
+    <use xlink:href="#rafal" transform="translate(108 165)"/><use xlink:href="#kyan" transform="translate(314 165)"/><use xlink:href="#dad" transform="translate(543 126) scale(1.02)"/>
+    <g transform="translate(357 60)" stroke="#22354c" stroke-width="4"><path d="M14 37V21Q14 -5 39 -5Q64 -5 64 21V37" fill="none"/><rect x="0" y="32" width="78" height="57" rx="8" fill="#ffc65c"/><circle cx="39" cy="55" r="6" fill="#22354c"/><path d="M39 60V72"/></g>
+    <text x="399" y="484" text-anchor="middle" font-family="monospace" font-size="18" fill="#22354c">ACCESS DENIED. DAD IS THE ADMIN.</text>
+  </symbol>
+  <symbol id="healed" viewBox="0 0 800 520">
+    <rect width="800" height="520" fill="#f9ebce"/><rect width="800" height="520" fill="url(#dots)"/><circle cx="366" cy="257" r="191" fill="#c7ded1"/>
+    <use xlink:href="#rafal-healed" transform="translate(117 134) scale(1.12)"/><use xlink:href="#kyan" transform="translate(331 142) scale(1.1)"/>
+    <path d="M535 365H742V388H535Z" fill="#cdad84" stroke="#22354c" stroke-width="4"/><path d="M554 389V453M723 389V453" stroke="#22354c" stroke-width="8"/>
+    <rect x="577" y="326" width="126" height="38" rx="3" fill="#ead1a5" stroke="#22354c" stroke-width="3"/>
+    <use xlink:href="#right-pinky-splint" transform="translate(606 174) scale(2.7)"/>
+    <text x="640" y="350" text-anchor="middle" font-family="monospace" font-size="13" fill="#22354c">RETIRED LEGEND</text>
+    <use xlink:href="#spark" x="598" y="198"/><use xlink:href="#spark" x="690" y="283"/><use xlink:href="#laptop" transform="translate(343 369) scale(.75)"/>
+    <rect x="192" y="33" width="416" height="38" rx="19" fill="#22354c"/><text x="400" y="59" text-anchor="middle" font-family="monospace" font-size="18" fill="#fff0d5">THE TALENT WAS ALREADY INSTALLED.</text>
+  </symbol>
+</defs>
+<use xlink:href="#cover" x="0" y="0" width="800" height="520"/>
+<use xlink:href="#pe" x="800" y="0" width="800" height="520"/>
+<use xlink:href="#hospital" x="1600" y="0" width="800" height="520"/>
+<use xlink:href="#diagnostics" x="0" y="520" width="800" height="520"/>
+<use xlink:href="#bed_wars" x="800" y="520" width="800" height="520"/>
+<use xlink:href="#geometry_dash" x="1600" y="520" width="800" height="520"/>
+<use xlink:href="#tetris" x="0" y="1040" width="800" height="520"/>
+<use xlink:href="#bedtime" x="800" y="1040" width="800" height="520"/>
+<use xlink:href="#healed" x="1600" y="1040" width="800" height="520"/>
+</svg>
