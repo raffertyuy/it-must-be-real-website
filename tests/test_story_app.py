@@ -25,7 +25,11 @@ class StoryAppTests(unittest.TestCase):
         self.open_book()
         self.assertTrue(self.button("← Previous").disabled)
         self.button("Next →").click().run()
-        self.assertEqual(self.app.query_params["page"], ["2"])
+        url_page = self.app.query_params["page"]
+        if isinstance(url_page, list):
+            url_page = url_page[-1]
+        self.assertEqual(str(url_page), "2")
+        self.assertEqual(self.app.selectbox[0].value, 2)
         self.button("← Previous").click().run()
         self.assertEqual(self.app.selectbox[0].value, 1)
         self.app.selectbox[0].select(8).run()
