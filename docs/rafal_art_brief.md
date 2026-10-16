@@ -1,4 +1,4 @@
-# Rafal — target brief for future illustration sets
+# The AI-Powered Robotic Finger — illustration brief
 
 The reader supplies all headings, narration, dialogue and page numbers as editable HTML. Artwork must contain **no text**, no speech bubbles, no labels, no motivational posters, no book mockup, no white text panel, and no UI/navigation controls.
 
@@ -13,7 +13,7 @@ Create ONE large 3-column × 3-row contact sheet with NINE separate 2:3 PORTRAIT
 - Rafal: youthful Chinese boy, tousled straight black hair, BLACK RECTANGULAR GLASSES in every panel; charcoal hoodie with cyan accents. His background and age are art direction only, not story text.
 - Kyan: youthful Nepali boy, curly dark hair, warm brown skin, orange hoodie, NO GLASSES. Keep his hair, face and clothing consistent.
 - Dad: clearly adult man, short black hair, glasses, dark casual shirt. He actually plays with Rafal and loses at both Minecraft Bed Wars and Tetris.
-- Mom: clearly adult woman, shoulder-length black hair, teal jacket, no lab coat. She takes Rafal to hospital and brings him to the follow-up. The doctor is a separate person in a white coat.
+- Mom: clearly adult woman, long black hair with visible blue-green underlayers, teal jacket, no lab coat. She takes Rafal to hospital and brings him to the follow-up. The doctor is a separate person in a white coat.
 
 ## Non-negotiable hand continuity
 
