@@ -44,6 +44,11 @@ def home_page():
     if st.button("🍕 Show me REAL food!", type="primary"):
         st.switch_page("pages/food.py")
 
+    st.subheader("📚 Small stories. Extremely real adventures.")
+    st.write("Meet Rafal, Kyan, and the world's most suspicious AI-powered pinky.")
+    if st.button("Meet PINK-E 9000 →"):
+        st.switch_page("pages/short_stories.py")
+
     st.write("")
 
     st.warning(
@@ -59,9 +64,10 @@ food = st.Page("pages/food.py", title="Food", icon="🍔")
 games = st.Page("pages/games.py", title="Games", icon="🎮")
 travel = st.Page("pages/travel.py", title="Travel", icon="✈️")
 random = st.Page("pages/random.py", title="Random", icon="🎲")
+short_stories = st.Page("pages/short_stories.py", title="Short Stories", icon="📚", url_path="short-stories")
 
 # Create navigation
-pg = st.navigation([home, food, games, travel, random])
+pg = st.navigation([home, food, games, travel, random, short_stories])
 
 # Add custom sidebar content
 with st.sidebar:

@@ -1,0 +1,139 @@
+{
+  "id": "rafal-robotic-pinky",
+  "title": "Rafal and the Robotic Pinky",
+  "subtitle": "One tiny fracture. One enormous upgrade. Absolutely no warranty.",
+  "description": "When Dad calls Rafal’s metal splint an AI-powered robotic finger, Rafal and his best friend Kyan discover the world’s least reliable gaming upgrade: PINK-E 9000.",
+  "tags": ["Gaming", "Friendship", "Highly questionable technology"],
+  "artwork": "rafal_robotic_pinky.svg",
+  "cover_alt": "Rafal, a Chinese boy with side-swept black hair and a teal shirt, holds up his splinted right pinky beside Kyan, his Nepali friend in an orange hoodie. Imaginary game blocks float around them.",
+  "note": "Inspired by a real family moment. The AI powers and gaming adventures are make-believe. A splint is for healing, not a gaming upgrade; follow the treating clinician’s instructions.",
+  "pages": [
+    {
+      "scene": "pe",
+      "title": "The update nobody ordered",
+      "paragraphs": [
+        "Rafal was twelve, Chinese, and very good at dodging things in video games. Unfortunately, P.E. did not come with a keyboard.",
+        "A ball flew straight into the tip of his right pinky. BONK. His smallest finger immediately filed the biggest complaint.",
+        "Kyan, his Nepali best friend, hurried over. “You okay?”",
+        "“I think my finger just rage-quit.”",
+        "The teacher got help, and Dad rushed Rafal to the hospital. There was no respawn button, so they were taking this seriously.",
+        "“On the bright side,” Dad said gently, “you finally touched something that wasn’t a screen.”",
+        "Rafal gave him the sort of look usually reserved for an unskippable advert."
+      ],
+      "caption": "P.E.: the only game where the loading screen is a hospital waiting room.",
+      "alt": "On a school sports court, a ball passes Rafal’s bare right hand. Rafal looks worried, and Kyan stands nearby. There is no splint before the hospital visit."
+    },
+    {
+      "scene": "hospital",
+      "title": "Introducing PINK-E 9000",
+      "paragraphs": [
+        "The X-ray showed a small fracture. The doctor fitted a metal splint to keep Rafal’s right pinky straight while it healed. He would wear it for the next couple of weeks, as instructed.",
+        "Dad inspected the silver splint and its two pale-blue straps. His eyes lit up.",
+        "“A robotic finger.”",
+        "“A splint,” said Rafal.",
+        "“PINK-E 9000. Advanced AI. Military-grade pinky promises.”",
+        "“It’s literally holding my finger still.”",
+        "“Exactly. Incredible stabilisation.”",
+        "Dad assured him that the AI was imaginary and the doctor’s instructions were not. Then he whispered, “That’s what they make all cyborg dads say.”"
+      ],
+      "caption": "Hardware installed. Dad-joke filter not included.",
+      "alt": "In the hospital, Dad in glasses stands beside Rafal. A silver splint with two pale-blue straps now covers only Rafal’s right pinky. A stylised hand X-ray hangs on the wall."
+    },
+    {
+      "scene": "diagnostics",
+      "title": "Kyan runs the diagnostics",
+      "paragraphs": [
+        "When Kyan came over, Dad introduced the new technology with the seriousness of a man launching a very small spaceship.",
+        "“Can it run Minecraft?” Kyan asked.",
+        "“It can run Minecraft Bed Wars, Geometry Dash, and Tetris. Simultaneously. In its imagination.”",
+        "Rafal kept his injured hand away from the keyboard. Kyan would handle the controls; Rafal would supply the strategy. Dad would supply the sound effects, despite nobody requesting that feature.",
+        "“What does AI stand for?” Kyan asked.",
+        "“Artificial Intelligence,” said Dad.",
+        "“Actually Injured,” said Rafal.",
+        "Kyan opened a notebook. “Good. The honesty module works.”"
+      ],
+      "caption": "Two engineers. Zero qualifications. One extremely honest diagnostic.",
+      "alt": "Rafal holds his unchanged right-pinky splint clear of the laptop while Kyan, in his orange hoodie, studies a notebook. A floating question mark signals their pretend technology test."
+    },
+    {
+      "scene": "bed_wars",
+      "title": "Bed Wars becomes Bedtime Wars",
+      "paragraphs": [
+        "“BEEP,” said Dad. “PINK-E has detected an enemy bed.”",
+        "In their made-up adventure, Rafal’s finger projected the greatest Bed Wars strategy ever devised: a fortress of blocks, an enormous blanket, and twelve extremely fluffy pillows.",
+        "“Why pillows?” Kyan asked.",
+        "“Psychological warfare,” said Dad. “Nobody fights well when they’re cosy.”",
+        "Imaginary opponents charged. PINK-E supplied warm milk and a bedtime story. Within seconds, the entire enemy team was snoring.",
+        "“It’s Bed Wars,” Rafal said. “Not Bedtime Wars.”",
+        "Kyan nodded at the real screen. “Also, while your dad was tucking everyone in, someone stole our actual bed.”",
+        "Dad paused. “The AI is still in pyjamas. I mean beta.”"
+      ],
+      "caption": "Victory by excessive cosiness. Not an actual Minecraft feature.",
+      "alt": "In a clearly imagined game world, a giant block-built bed and pillows float above Rafal and Kyan. Rafal’s silver right-pinky splint remains exactly the same, not a robotic glove."
+    },
+    {
+      "scene": "geometry_dash",
+      "title": "Geometry Detour",
+      "paragraphs": [
+        "Next came Geometry Dash. Rafal knew the rhythm by heart. “Jump after this beat,” he told Kyan.",
+        "“BEEP,” Dad interrupted. “Calculating the optimal—”",
+        "Their cube hit the first spike.",
+        "“—learning opportunity.”",
+        "In Dad’s imaginary version, PINK-E solved the problem by putting tiny traffic cones in front of every spike, applying for planning permission, and building a ramp around the entire level.",
+        "Kyan stared. “That’s not Geometry Dash. That’s Geometry Detour.”",
+        "Rafal laughed. “My finger didn’t need an upgrade. Your commentary needs a mute button.”",
+        "On the next attempt, Dad stayed quiet. Kyan followed Rafal’s timing. They got much farther. The silence received excellent reviews."
+      ],
+      "caption": "Spikes defeated by local infrastructure. Commentary defeated by silence.",
+      "alt": "An imaginary yellow game cube follows a curved detour past triangular spikes and traffic cones. Below, the same Rafal and Kyan watch, with the splint still on Rafal’s right pinky."
+    },
+    {
+      "scene": "tetris",
+      "title": "Homework sold separately",
+      "paragraphs": [
+        "For Tetris, Rafal spotted the perfect gap. “Save the long piece,” he told Kyan.",
+        "Four lines vanished. It was teamwork. Dad announced it as a major breakthrough in pinky-based computing.",
+        "In their imaginary version, PINK-E could organise anything: toy boxes, messy drawers, the mysterious cables behind the television.",
+        "“Can it clear my homework?” Rafal asked.",
+        "Dad made a noise like a printer swallowing a sandwich. “ERROR. HOMEWORK REQUIRES THE PREMIUM PLAN.”",
+        "“How much?” asked Kyan.",
+        "“Twenty minutes of actually doing it.”",
+        "Rafal sighed. “Worst subscription ever.”"
+      ],
+      "caption": "Four lines cleared. One very familiar parental sales pitch unlocked.",
+      "alt": "Bright falling-block shapes fit around an imaginary homework sheet above the two boys. Rafal wears his teal shirt and unchanged right-pinky splint; Kyan wears the same orange hoodie."
+    },
+    {
+      "scene": "bedtime",
+      "title": "The final boss: Dad",
+      "paragraphs": [
+        "At the end of the evening, Kyan packed up to go home. Dad announced bedtime.",
+        "Rafal raised an eyebrow. “PINK-E 9000, override parental controls.”",
+        "Dad folded his arms. “ACCESS DENIED. Dad has administrator privileges.”",
+        "“Can we at least download more snacks?” Kyan asked.",
+        "“Insufficient cookies.”",
+        "Rafal tried one last command. “Install five more minutes.”",
+        "“Update unavailable. Entering recovery mode.” Dad’s voice softened. “Seriously, though. We’re giving that finger time to heal.”",
+        "Kyan saluted with his notebook. “Tomorrow we test whether it can uninstall dad jokes.”",
+        "“Impossible,” said Dad. “Those are built into the motherboard.”"
+      ],
+      "caption": "The one boss you cannot defeat by pressing buttons faster.",
+      "alt": "Dad stands beside a bedtime clock while Rafal and Kyan face him. The same small splint stays on Rafal’s right pinky. A pretend padlock symbol represents parental controls."
+    },
+    {
+      "scene": "healed",
+      "title": "Uninstalled. Still legendary.",
+      "paragraphs": [
+        "After the couple of weeks had passed, the doctor checked Rafal’s finger and said the splint could come off. Later, when he was cleared to play again, Rafal returned to his games.",
+        "He still spotted clever Bed Wars strategies. He still knew the Geometry Dash rhythm. He still saved the long piece in Tetris.",
+        "“Interesting,” said Kyan. “The talent was already installed.”",
+        "Dad placed the retired splint on a tiny cardboard pedestal. “Limited edition. One careful owner. Terrible at P.E.”",
+        "“So the AI wasn’t real?” Kyan asked.",
+        "“Of course it was,” Dad said. “It’s on the website.”",
+        "Rafal smiled. His finger no longer needed a metal splint. His dad clearly still needed a software update."
+      ],
+      "caption": "Friendship: fully compatible. Dad: still running the original firmware.",
+      "alt": "Rafal and Kyan smile beside a laptop. Rafal’s right hand is now bare, after the doctor’s clearance. The removed silver splint with two blue straps sits separately on a small display pedestal."
+    }
+  ]
+}

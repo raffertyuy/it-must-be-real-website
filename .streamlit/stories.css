@@ -1,0 +1,33 @@
+/* Scoped book styles: do not change image sizing on Food, Games, etc. */
+.story-cover, .story-spread {
+  display: grid; grid-template-columns: 1.1fr 1fr; align-items: center;
+  max-width: 1220px; margin: 1rem auto 1.5rem; overflow: hidden;
+  border: 1px solid #dccfb8; border-radius: 18px; background: #fff9ee;
+  box-shadow: 0 12px 34px #182f4610; color: #22354c;
+}
+.story-cover { background: #20334d; color: #fff3d8; border-color: #3e5870; }
+.story-art { margin: 0; min-width: 0; padding: 18px; }
+.story-art img {
+  width: 100% !important; max-width: 100% !important; height: auto !important;
+  display: block; border-radius: 10px; margin: 0; box-shadow: none;
+}
+.story-art figcaption { font: italic .85rem/1.5 sans-serif; color: #5a6973; padding: 12px 8px 0; }
+.story-copy { min-width: 0; padding: 32px; }
+.story-copy h2, .story-copy h3 { color: inherit; text-align: left; margin: .55rem 0 1rem; padding: 0; }
+.story-copy h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.12; }
+.story-copy h3 { font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.2; }
+.story-copy p { font-size: 1.02rem; line-height: 1.7; margin: 0 0 .85rem; }
+.story-eyebrow { font: 700 .75rem/1.4 monospace; letter-spacing: .14em; color: #327679; }
+.story-cover .story-eyebrow { color: #ffc65c; }
+.story-copy .story-subtitle { color: #ffc65c; font-size: 1.1rem; }
+.story-copy .story-tags { color: #cae3dc; font: .8rem/1.6 monospace; margin-top: 1.4rem; }
+@media (max-width: 850px) {
+  .story-cover, .story-spread { grid-template-columns: 1fr; }
+  .story-copy { padding: 22px; }
+  .story-art { padding: 12px 12px 0; }
+  .story-copy p { font-size: 1rem; }
+}
+@media print {
+  .story-spread { display: block; break-inside: avoid; box-shadow: none; }
+  .story-art { max-width: 620px; margin: auto; }
+}
