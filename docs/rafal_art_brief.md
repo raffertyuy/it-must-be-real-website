@@ -1,6 +1,8 @@
-# Rafal — illustration-only production brief
+# Rafal — target brief for future illustration sets
 
 The reader supplies all headings, narration, dialogue and page numbers as editable HTML. Artwork must contain **no text**, no speech bubbles, no labels, no motivational posters, no book mockup, no white text panel, and no UI/navigation controls.
+
+The current published edition uses reviewed portrait crops, described in `short_stories.md`. The following is a target brief for future full-scene expansion, not a claim that the current edition was generated as a new nine-panel master.
 
 ## Output
 

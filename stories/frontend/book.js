@@ -28,7 +28,7 @@ export default function renderBook(component) {
     animation:null, disposed:false, touch:null, timers:new Set()};
   root.__book = state;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const narrow = window.matchMedia('(max-width: 740px)');
+  const narrow = {get matches() {return root.getBoundingClientRect().width <= 740;}};
   const abort = new AbortController();
   const listen = (element, event, fn) => element.addEventListener(event, fn, {signal:abort.signal});
   const el = (tag, cls, text) => {
