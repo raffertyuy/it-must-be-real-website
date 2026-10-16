@@ -1,0 +1,45 @@
+name: Finalize story reader
+on:
+  push:
+    branches: [feat/cyber-storybook-reader]
+    paths: [.github/workflows/finalize-story-reader.yml]
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: feat/cyber-storybook-reader
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Match layout to available book width and finish authoring notes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('stories/frontend/book.css')
+          s=p.read_text()
+          assert '@media(max-width:740px)' in s
+          s=s.replace('.reader { --ink:', '.reader { container-type:inline-size; --ink:', 1).replace('@media(max-width:740px)', '@container(max-width:740px)')
+          p.write_text(s)
+          p=Path('stories/frontend/book.js')
+          s=p.read_text()
+          old="const narrow = window.matchMedia('(max-width: 740px)');"
+          assert old in s
+          p.write_text(s.replace(old,'const narrow = {get matches() {return root.getBoundingClientRect().width <= 740;}};'))
+          p=Path('docs/rafal_art_brief.md')
+          s=p.read_text()
+          p.write_text(s.replace('# Rafal — illustration-only production brief','# Rafal — target brief for future illustration sets',1).replace('## Output','The current published edition uses reviewed portrait crops, described in `short_stories.md`. The following is a target brief for future full-scene expansion, not a claim that the current edition was generated as a new nine-panel master.\n\n## Output',1))
+          PY
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - name: Commit final changes and remove one-time transport workflows
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/story-reader-workbench.yml .github/workflows/import-story-reader.yml .github/workflows/finalize-story-reader.yml
+          git add stories/frontend/book.css stories/frontend/book.js docs/rafal_art_brief.md
+          git commit -m 'Adapt book layout to container width and remove temporary transfer workflows'
+          git push origin HEAD:feat/cyber-storybook-reader
